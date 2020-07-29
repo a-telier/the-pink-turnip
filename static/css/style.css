@@ -3,20 +3,15 @@ body {
     margin: auto;
 }
 
-.text-block{
-    display: inline-flex;
-    text-align: center;
+.component{
+    width: 80%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
-.teaser-component{
-    height: 100%;
-    width: 90%;
-    padding-right: 5%;
-    padding-left: 5%;
-}
-
-.teaser-subcomponent{
-    height: 50%;
-    width: 500px;
-    background-size: contain;
+.teaser-images{
+    width: 80%;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-size: cover;
 }

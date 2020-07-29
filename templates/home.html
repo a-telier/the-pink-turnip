@@ -4,15 +4,17 @@
 {% endblock %}
 
 {% block body %}
-<h1>Recipes</h1>
-    {% for recipe in recipes %}
-    <div class="teaser-component">
-        <div class="col-md-6 text-block teaser-subcomponent">
-            <h2>{{recipe.name}}</h2>
-            <p>{{recipe.teaser}}</p>
-        </div>
-        <div class="col-md-6 text-block teaser-subcomponent">
-            <img src="{{ recipe.imageURL }}" alt="">
+    <div>
+        <h1>Recipes</h1>
+        {% for recipe in recipes %}
+        <div class="row">
+            <div class="col l6 m12 s12">
+                <h2>{{recipe.name}}</h2>
+                <p>{{recipe.teaser}}</p>
+            </div>
+            <div class="col l6 m12 s12">
+                <img class="teaser-images" src="{{ recipe.imageURL }}" alt="{{ recipe.name}}">
+            </div>
         </div>
     </div>
     {% endfor %}  

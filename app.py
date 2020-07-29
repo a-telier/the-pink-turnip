@@ -7,6 +7,9 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 
+#   start an instance of Flask
+app = Flask(__name__)
+
 #   this code imports env
 #   where passwords are stored for ex
 #   but not deployed to public
@@ -15,15 +18,13 @@ from os import path
 if path.exists("env.py"):
     import env 
 #   get secret key
-SECRET_KEY = os.environ.get('SECRET_KEY') 
+app.secret_key = os.environ.get("SECRET_KEY")
 
-
-#   start an instance of Flask
-app = Flask(__name__)
 
 #   connect to 'blog' Mongo DB database
 app.config["MONGO_DBNAME"] = 'blog'
 app.config["MONGO_URI"] = "mongodb+srv://alex-rabi:Domenica16@blog.wvugx.mongodb.net/blog?retryWrites=true&w=majority"
+
 
 #   create an instance of PyMongo
 mongo = PyMongo(app)
@@ -31,11 +32,12 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/get_tasks')
+@app.route('/get_blog')
 
 
-def get_tasks():
-    return render_template("blog.html", blog=mongo.db.blog.find())
+def get_blog():
+    return render_template('editorials.html',
+    editorials = mongo.db.editorials.find())
 
 
 if __name__ == '__main__':

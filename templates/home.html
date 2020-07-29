@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1>Editorials</h1>
+    {% for editorial in editorials %}
+        <h2>{{editorial.title}}</h2>
+        <p>{{editorial.teaser}}</p>
+        <img src="{{ editorial.imageURL }}" alt="">
+        {{editorial.imageURL}}
+    {% endfor %}  
+{% endblock %} 

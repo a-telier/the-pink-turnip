@@ -8,14 +8,15 @@ body {
     text-align: center;
 }
 
-home-component{
+.teaser-component{
     height: 100%;
     width: 90%;
     padding-right: 5%;
     padding-left: 5%;
 }
 
-.teaser-images{
+.teaser-subcomponent{
     height: 50%;
     width: 500px;
+    background-size: contain;
 }

@@ -1,22 +1,19 @@
 {% extends 'base.html' %}
 
 {% block head %}
-
 {% endblock %}
 
 {% block body %}
-<h1>Editorials</h1>
-    {% for editorial in editorials %}
-    <div class="home-component">
-        <div class="col-md-6 text-block">
-            <h2>{{editorial.title}}</h2>
-            <p>{{editorial.teaser}}</p>
+<h1>Recipes</h1>
+    {% for recipe in recipes %}
+    <div class="teaser-component">
+        <div class="col-md-6 text-block teaser-subcomponent">
+            <h2>{{recipe.name}}</h2>
+            <p>{{recipe.teaser}}</p>
         </div>
-        <div class="col-md-6 text-block">
-            <img src="{{ editorial.imageURL }}" alt="" class="teaser-images">
+        <div class="col-md-6 text-block teaser-subcomponent">
+            <img src="{{ recipe.imageURL }}" alt="">
         </div>
     </div>
-    
-
     {% endfor %}  
 {% endblock %} 

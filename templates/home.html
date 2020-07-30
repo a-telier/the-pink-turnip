@@ -5,71 +5,44 @@
 {% endblock %}
 
 {% block body %}
-<body>
     <section>
         <div class="container">
             <h1>Recipes</h1>
-        </div>
-        {% for recipe in recipes %}
-            {% if loop.index % 2 != 0 %}
-            <div class="container">
-            <div class="card">
-                    <div class="card-image waves-effect waves-block waves-light">
-                    <img class="activator responsive-img" src="{{ recipe.imageURL }}">
+                <div class="row">
+                    {% for recipe in recipes %}
+                    <div class="col s12 m6 l6">
+                        <div class="card">
+                            <span class="teaser-overlay"></span>
+                            <div class="card-image"> 
+                                <img class="teaser-image" src="{{ recipe.imageURL }}">
+                                <span class="card-title">{{recipe.name}}</span>
+                            </div>
+                            <div class="card-content">        
+                                <ul class="tabs">
+                                    <li class="tab half teal-text accent-4">
+                                        {% if recipe.isVegan == True %}
+                                            <p><i class="fa fa-heart" aria-hidden="true"></i> Vegan </p>
+                                        {% else %}
+                                            <p><i class="fa fa-times" aria-hidden="true"></i> Not Vegan </p>
+                                        {% endif%}
+                                    </li>
+                                    <li class="tab half teal-text accent-4">
+                                        {% if recipe.isVegetarian == True %}
+                                            <p><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian </p>
+                                        {% else %}
+                                            <p><i class="fa fa-times" aria-hidden="true"></i> Not Vegetarian </p>
+                                        {% endif%}
+                                    </li>
+                                </ul>
+                                <p>{{recipe.teaser}}</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="#">Link will go here!</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
                 </div>
-                <div class="card-content">
-                    <span class="card-title activator grey-text text-darken-4">{{recipe.name}}</span>
-                    <span class="col s5 m5 l5 left">
-                        <p>{{recipe.teaser}}</p>
-                        <p><a href="#">See instructions</a></p>
-                    </span>
-                    <span class="col s5 m5 l5 right">
-                        {% if recipe.isVegan == True %}
-                        <h6><i class="fa fa-heart" aria-hidden="true"></i>Vegan</h6>
-                        {% else %}
-                        <h6><i class="fa fa-times" aria-hidden="true"></i>Not Vegan</h6>
-                        {% endif%}
-                        {% if recipe.isVegetarian == True %}
-                        <h6><i class="fa fa-envira" aria-hidden="true"></i>Vegetarian</h6>
-                        {% else %}
-                        <h6><i class="fa fa-times" aria-hidden="true"></i>Not Vegetarian</h6>
-                        {% endif%}
-                    </span>
-                </div>
-                <div class="card-reveal">
-                    <span class="card-title grey-text text-darken-4">{{recipe.name}}<i class="material-icons right">close</i></span>
-                    <h3>Ingredients</h3>
-                    <p>{{recipe.ingredients}}</p>
-                    <h3>Instructions</h3>
-                    <p>{{recipe.instructions}}</p>
-                </div>
-            </div>
-
-            <!-- <div class="row card medium z-depth-3">
-                <div class="col l6 m12 s12">
-                    <h2 class="card-title">{{recipe.name}}</h2>
-                    <p class="card-content">{{recipe.teaser}}</p>
-                </div>
-                <div class="col l6 m12 s12">
-                    <img class="responsive-img card-image styling-img" src="{{ recipe.imageURL }}" alt="{{ recipe.name}}">
-                </div>
-            </div> -->
-            <span></span>
-            {% else %}
-            <div class="row card medium z-depth-3">
-                <div class="col l6 m12 s12">
-                    <img class="responsive-img card-image styling-img" src="{{ recipe.imageURL }}" alt="{{ recipe.name}}">
-                </div>
-                <div class="col l6 m12 s12">
-                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-                    <h2 class="card-title">{{recipe.name}}</h2>
-                    <p>{{recipe.teaser}}</p>
-                </div>
-            </div>
-            <span></span>
-        </div>
-            {% endif %}
-        {% endfor %}  
+        </div> 
     </section>
-</body>
 {% endblock %}

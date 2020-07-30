@@ -1,17 +1,23 @@
-.card-title{
-    color: red;
+
+/*--------------------------------------------cards*/
+.half{
+    width: 50%;
 }
 
-/*--------------------------------------------teaser*/
+.card{
+    z-index: -2;
+}
+.card-image{
+    z-index: -1;
+}
 .teaser-image{
-    background-size: contain !important;
+    z-index: 1;
 }
-
-.styling-img{
-    padding: 2.5% !important;
-    margin: 2.5%;
+.teaser-overlay{
+    background-color: rgb(40,40,40);
+    background-size: cover;
+    z-index: 2 !important;
 }
-
-.card-content{
-    height: auto !important;
+.card-title{
+    z-index: 3 !important;
 }

@@ -6,18 +6,21 @@
 
 {% block body %}
     <section>
+    <!--landing page view needs to be added here-->
+    </section>
+    <section>
         <div class="container">
             <h1>Recipes</h1>
                 <div class="row">
                     {% for recipe in recipes %}
                     <div class="col s12 m6 l6">
                         <div class="card">
-                            <span class="teaser-overlay"></span>
-                            <div class="card-image"> 
+                            <span class="teaser-overlay responsive-img"></span>
+                            <div class="card-image">
                                 <img class="teaser-image" src="{{ recipe.imageURL }}">
                                 <span class="card-title">{{recipe.name}}</span>
                             </div>
-                            <div class="card-content">        
+                            <div class="card-content"> 
                                 <ul class="tabs">
                                     <li class="tab half teal-text accent-4">
                                         {% if recipe.isVegan == True %}
@@ -34,7 +37,7 @@
                                         {% endif%}
                                     </li>
                                 </ul>
-                                <p>{{recipe.teaser}}</p>
+                                <p class="text-centered">It takes {{recipe.duration}} minutes to make and it serves {{recipe.portions}} people!</p>
                             </div>
                             <div class="card-action">
                                 <a href="#">Link will go here!</a>

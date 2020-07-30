@@ -1,14 +1,17 @@
-body {
-    font-family: sans-serif;
-    margin: auto;
-}
-
-.teaser-container{
-    height: 100%;
-    width: 100%;
+.card-title{
+    color: red;
 }
 
 /*--------------------------------------------teaser*/
 .teaser-image{
     background-size: contain !important;
+}
+
+.styling-img{
+    padding: 2.5% !important;
+    margin: 2.5%;
+}
+
+.card-content{
+    height: auto !important;
 }

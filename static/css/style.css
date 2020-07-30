@@ -3,15 +3,12 @@ body {
     margin: auto;
 }
 
-.component{
-    width: 80%;
-    margin-left: 5%;
-    margin-right: 5%;
+.teaser-container{
+    height: 100%;
+    width: 100%;
 }
 
-.teaser-images{
-    width: 80%;
-    margin-left: 5%;
-    margin-right: 5%;
-    background-size: cover;
+/*--------------------------------------------teaser*/
+.teaser-image{
+    background-size: contain !important;
 }

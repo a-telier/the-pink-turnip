@@ -1,42 +1,41 @@
-/*--------------------------------------------fonts & icons*/
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
+/*--------------------------------------------fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lato:wght@400;700;900&family=Leckerli+One&family=Montserrat:wght@500;700;800&display=swap');
 
-/*--------------------------------------------headers styling*/
+/*--------------------------------------------text styling*/
 body{
     scroll-behavior: smooth;
     font-family: Lato, sans-serif important!;
 }
-h1, h2, h3{
-    font-family: 'Krona One', cursive;
-}
 h1{
-    font-size: 2.5em;
+    font-family: Montserrat;
 }
-h2{
-    font-size: 1.5em;
-    font-weight: bold;
+h2, h3{
+    font-family: Indie Flower;
 }
-h3, h5{
-    font-size: 1.25em;
-    font-weight: bold;
+
+/*--------------------------------------------navigation*/
+nav{
+    z-index: -1;
 }
-p{
-    font-size: 1em;
+nav .brand-logo{
+    height: 35px;
+    width: 35px;
+    margin: 1%;
+    background-image: url("../static/img/the-pink-turnip-transparent-logo.png");
+    background-size: cover;
+    z-index: 5 !important;
 }
 
 /*--------------------------------------------home*/
-/*------------------------------------landing*/
+/*-----------------------------------landing*/
 .landing{
-    position: relative;
     height:60vw;
-    width: 100%;
+    /* position: relative; */
 }
 
 #landing-image{
     position: absolute;
     height:60vw;
-    width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -44,9 +43,10 @@ p{
 #landing-text{
     margin: 2%;
     position: absolute;
+    float: left;
     z-index: 2;
 }
-/*------------------------------------teaser*/
+/*-----------------------------------teaser*/
 .half{
     width: 50%;
 }

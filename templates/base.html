@@ -6,7 +6,7 @@
 {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=(device-width), initial-scale=1.0">
-    <title>{% block title %}{% endblock %} - Recipes</title>
+    <title>{% block title %}{% endblock %} Recipes</title>
 
     <!--Styling libraries-->
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css"/>
@@ -16,15 +16,21 @@
     <script src="https://kit.fontawesome.com/fec8644327.js" crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <!--favicon-->
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../static/favicon/site.webmanifest">
 {% endblock %}
     
 <!--Navigation-->
 {% block navbar %}
     <nav class="row">
         <div class="nav-wrapper col s12 m12 l12 xl12">
-            <a href="#!" class="brand-logo">Logo</a>
+            <a class="brand-logo" src="../static/img/the-pink-turnip-transparent-logo.png"></a>
             <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="#!">Home</a></li>
                 <li><a href="#!"><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian</a></li>
                 <li><a href="#!"><i class="fa fa-heart" aria-hidden="true"></i> Vegan</a></li>

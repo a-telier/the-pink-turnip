@@ -1,5 +1,52 @@
+/*--------------------------------------------fonts & icons*/
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Krona+One&display=swap');
 
-/*--------------------------------------------cards*/
+/*--------------------------------------------headers styling*/
+body{
+    scroll-behavior: smooth;
+    font-family: Lato, sans-serif important!;
+}
+h1, h2, h3{
+    font-family: 'Krona One', cursive;
+}
+h1{
+    font-size: 2.5em;
+}
+h2{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+h3, h5{
+    font-size: 1.25em;
+    font-weight: bold;
+}
+p{
+    font-size: 1em;
+}
+
+/*--------------------------------------------home*/
+/*------------------------------------landing*/
+.landing{
+    position: relative;
+    height:60vw;
+    width: 100%;
+}
+
+#landing-image{
+    position: absolute;
+    height:60vw;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#landing-text{
+    margin: 2%;
+    position: absolute;
+    z-index: 2;
+}
+/*------------------------------------teaser*/
 .half{
     width: 50%;
 }

@@ -1,0 +1,20 @@
+{% extends 'home.html' %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block body %}
+<section>
+{% for recipe in recipes %}
+    <div class="container">
+        <div class="row">
+            <img id="recipe-image" src="../static/img/fruits-background.png" alt="fruits">
+            <h3>{{recipe.name}}</h3>
+            <h3>{{recipe.name}}</h3>
+        </div>
+    </div>
+{% endfor %}
+</section>
+{% endblock %}
+

@@ -13,6 +13,8 @@ from bson.objectid import ObjectId
 from os import path
 # import env as config
 
+from markupsafe import escape
+
 
 #   start an instance of Flask
 app = Flask(__name__)
@@ -30,8 +32,17 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-def get_recipes():
+@app.route('/home')
+def get_teaser():
     return render_template("home.html", recipes=mongo.db.recipes.find())
+
+@app.route('/add')
+def get_updateRecipe():
+    return render_template("add.html", recipes=mongo.db.recipes.find())
+
+@app.route('/recipe/<_id>')
+def get_recipe(linkURL):
+    return render_template("recipe.html", linkURL=mongo.db.recipes.find())
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

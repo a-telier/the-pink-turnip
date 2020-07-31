@@ -8,36 +8,37 @@ body{
 }
 h1{
     font-family: Montserrat;
+    font-weight: 800;
 }
 h2, h3{
     font-family: Indie Flower;
 }
 
 /*--------------------------------------------navigation*/
-nav{
-    z-index: -1;
-}
-nav .brand-logo{
-    height: 35px;
-    width: 35px;
+#pink-turnip-logo{
+    height: 50px;
+    width: 50px;
     margin: 1%;
-    background-image: url("../static/img/the-pink-turnip-transparent-logo.png");
+    position: absolute;
+    background-image: url("../img/logo/the-pink-turnip-transparent-logo.png");
     background-size: cover;
     z-index: 5 !important;
 }
 
+
 /*--------------------------------------------home*/
 /*-----------------------------------landing*/
 .landing{
-    height:60vw;
+    height:50vw;
     /* position: relative; */
 }
 
 #landing-image{
+    height:50vw;
+    width: 100%;
     position: absolute;
-    height:60vw;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
 }
 
 #landing-text{
@@ -69,6 +70,17 @@ nav .brand-logo{
     z-index: 3 !important;
 }
 
-.tabs p {
+/*--------------------------------------------home*/
+#recipe-image{
+    height: 20vw;
+    width: 100%;
+}
 
+/*--------------------------------------------footer*/
+.a-telier {
+    font-size: 2em;
+    font-family: 'Homemade Apple', cursive;
+    color: black;
+
+    z-index: 8;
 }

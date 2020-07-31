@@ -8,11 +8,12 @@
     <section>
     <!--landing page view needs to be added here-->
         <div class="landing">
-            <img id="landing-image" src="../static/img/fruits-background.png" alt="fruits-background">
+            <img id="landing-image" src="../static/img/fruits-background.png" alt="fruits">
             <div class="row">
                 <div id="landing-text" class="col s7 m8 l8">
-                <h1>The Pink Turnip</h1>
-                <h3>Meatless, one monday at the time.</h3>
+                    <h1>The Pink Turnip</h1>
+                    <h3>Meatless, one Monday at the time.</h3>
+                    <a class="waves-effect waves-light btn teal-text teal lighten-5"><i class="fa fa-envira" aria-hidden="true"></i> Try our vegetarian recipes! </a>
                 </div>
                 <div class="col s3 m2 l2"></div>
             </div>
@@ -20,7 +21,7 @@
     </section>
     <section>
         <div class="container">
-            <h3>Be inspired..</h3>
+            <h3>Be inspired by our favorite recipes..</h3>
                 <div class="row">
                     {% for recipe in recipes %}
                     <div class="col s12 m6 l6">
@@ -55,7 +56,7 @@
                                     {% endif%}
                                 </ul>
                                 <!--indicator duration and portions in text format-->
-                                <p class="text-centered">It takes {{recipe.duration}} minutes to make this recipe, and it feeds {{recipe.portions}} people</p>
+                                <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>
                                 {% if recipe.portions > 2 %}
                                 <p> or {{(recipe.portions / 2)| round| int}} very hungry people ;)!</p>
                                 {% endif %}

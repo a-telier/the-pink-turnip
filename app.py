@@ -1,4 +1,6 @@
 import os
+import pandas as pd
+import numpy as np
 
 #   full stack framework for template development
 from flask import Flask, render_template, redirect, request, url_for
@@ -10,11 +12,9 @@ from bson.objectid import ObjectId
 #   this code imports env where passwords are stored for ex but not public
 from os import path
 
-#   used in datepicker
-import datetime
-
-today = datetime.datetime.now()
-
+#   used in datepicker --> not used at the moment
+    # import datetime
+    # today = datetime.datetime.now()
 
 #   start an instance of Flask
 app = Flask(__name__)
@@ -33,15 +33,21 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/get_recipe')
+@app.route('/home')
 def get_recipe():
     return render_template("home.html", recipes=mongo.db.recipes.find())
 
+@app.route('/recipe')
+def show_recipe():
+    return render_template("recipe.html", recipes=mongo.db.recipes.find())
+
+@app.route('/category')
+def get_cat():
+    return render_template("category.html", recipes=mongo.db.recipes.find())
 
 @app.route('/add_recipe')
 def add_recipe():
     return render_template("addrecipe.html", recipes=mongo.db.recipes.find())
-
 
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
@@ -50,8 +56,8 @@ def insert_recipe():
         "date": request.form.get('dateAdded'),
         "name": request.form.get('name'),
         "imageURL": request.form.get('imageURL'),
-        "ingredients": request.form.get('ingredients'),
-        "instructions": request.form.get('instructions'),
+        "ingredients": str(request.form.get('ingredients')).split(sep=", "),
+        "instructions": str(request.form.get('instructions')).split(sep=", "),
         "duration": int(request.form.get('duration')),
         "portions": int(request.form.get('portions')),
         "isVegan": bool(request.form.get('isVegan')),

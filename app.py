@@ -7,19 +7,20 @@ from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 
-#   this code imports env
-#   where passwords are stored for ex
-#   but not deployed to public
+#   this code imports env where passwords are stored for ex but not public
 from os import path
-# import env as config
 
-from markupsafe import escape
+#   used in datepicker
+import datetime
+
+today = datetime.datetime.now()
 
 
 #   start an instance of Flask
 app = Flask(__name__)
 
 #   file is only pulled when working on your code in your workspace
+#   import env as config, also works
 if path.exists("env.py"):
     import env
 

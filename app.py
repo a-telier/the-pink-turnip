@@ -32,20 +32,36 @@ mongo = PyMongo(app)
 
 
 @app.route('/')
-@app.route('/home')
-def get_teaser():
+@app.route('/get_recipe')
+def get_recipe():
     return render_template("home.html", recipes=mongo.db.recipes.find())
 
-@app.route('/add')
-def get_updateRecipe():
-    return render_template("add.html", recipes=mongo.db.recipes.find())
 
-@app.route('/recipe/<_id>')
-def get_recipe(linkURL):
-    return render_template("recipe.html", linkURL=mongo.db.recipes.find())
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template("addrecipe.html", recipes=mongo.db.recipes.find())
+
+
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+
+    recipeDict = {
+        "date": request.form.get('dateAdded'),
+        "name": request.form.get('name'),
+        "imageURL": request.form.get('imageURL'),
+        "ingredients": request.form.get('ingredients'),
+        "instructions": request.form.get('instructions'),
+        "duration": int(request.form.get('duration')),
+        "portions": int(request.form.get('portions')),
+        "isVegan": bool(request.form.get('isVegan')),
+        "isVegetarian": bool(request.form.get('isVegetarian')),
+    }
+
+    recipe = mongo.db.recipes
+    recipe.insert_one(recipeDict)
+    return redirect(url_for('get_recipe'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
-        port=int(os.environ.get('PORT')),
-        debug=True)
-
+    port=int(os.environ.get('PORT')),
+    debug=True)

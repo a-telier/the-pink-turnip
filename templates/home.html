@@ -57,9 +57,6 @@
                                 </ul>
                                 <!--indicator duration and portions in text format-->
                                 <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>
-                                {% if recipe.portions > 2 %}
-                                <p> or {{(recipe.portions / 2)| round| int}} very hungry people ;)!</p>
-                                {% endif %}
                             </div>
                             <div class="card-action">
                                 <a href="#">Link will go here!</a>

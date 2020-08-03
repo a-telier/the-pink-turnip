@@ -13,7 +13,7 @@ from bson.objectid import ObjectId
 from os import path
 
 #   used in datepicker --> not used at the moment
-    # import datetime
+import datetime
     # today = datetime.datetime.now()
 
 #   start an instance of Flask
@@ -37,9 +37,11 @@ mongo = PyMongo(app)
 def get_recipe():
     return render_template("home.html", recipes=mongo.db.recipes.find())
 
-@app.route('/recipe')
-def show_recipe():
-    return render_template("recipe.html", recipes=mongo.db.recipes.find())
+@app.route('/recipe/<recipe_id>')
+def show_recipe(recipe_id):
+    # The web framework gets post_id from the URL and passes it as a string
+    recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template("recipe.html", recipes=mongo.db.recipes.find_one(), recipe=recipe)
 
 @app.route('/category')
 def get_cat():
@@ -53,7 +55,8 @@ def add_recipe():
 def insert_recipe():
 
     recipeDict = {
-        "date": request.form.get('dateAdded'),
+        # "date": request.form.get('dateAdded'),  # returns a date selected by user
+        "date": datetime.datetime.utcnow(),  # returns the date for today
         "name": request.form.get('name'),
         "imageURL": request.form.get('imageURL'),
         "ingredients": str(request.form.get('ingredients')).split(sep=", "),

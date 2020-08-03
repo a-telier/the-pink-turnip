@@ -6,7 +6,6 @@
 
 {% block body %}
 <section>
-{% for recipe in recipes %}
     <div class="container">
         <div class="row">
             <img id="recipe-image" class="responsive-img" src="{{recipe.imageURL}}" alt="fruits">
@@ -31,6 +30,5 @@
             <p>{{recipe.instructions}}</p>
         </div>
     </div>
-{% endfor %}
 </section>
 {% endblock %}

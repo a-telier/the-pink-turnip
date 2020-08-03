@@ -53,22 +53,9 @@ h2, h3{
 .half{
     width: 50%;
 }
-.card{
-    z-index: -2;
-}
-.card-image{
-    z-index: -1;
-}
-.teaser-image{
-    z-index: 1;
-}
-.teaser-overlay{
-    background-color: rgb(40,40,40);
-    background-size: cover;
-    z-index: 2 !important;
-}
 .card-title{
-    z-index: 3 !important;
+    width: 100%;
+    background-color: rgb(40,40,40, .5);
 }
 #recipe-image{
     height: 20vw;
@@ -103,6 +90,11 @@ h2, h3{
    .input-field .prefix.active {
      color: #000;
    }
+
+/*--------------------------------------------find_one(recipe)*/
+#recipe-image{
+    height: 40vw;
+}
 
 /*--------------------------------------------footer*/
 .a-telier {

@@ -1,6 +1,6 @@
 import os
-import pandas as pd
-import numpy as np
+# import pandas as pd
+# import numpy as np
 
 #   full stack framework for template development
 from flask import Flask, render_template, redirect, request, url_for
@@ -12,9 +12,8 @@ from bson.objectid import ObjectId
 #   this code imports env where passwords are stored for ex but not public
 from os import path
 
-#   used in datepicker --> not used at the moment
+#   used in datepicker
 import datetime
-    # today = datetime.datetime.now()
 
 #   start an instance of Flask
 app = Flask(__name__)
@@ -32,6 +31,7 @@ app.config['MONGODB_NAME'] = os.environ.get('MONGODB_NAME')
 mongo = PyMongo(app)
 
 
+# GENERAL
 @app.route('/')
 @app.route('/home')
 def get_recipe():
@@ -40,13 +40,30 @@ def get_recipe():
 @app.route('/recipe/<recipe_id>')
 def show_recipe(recipe_id):
     # The web framework gets post_id from the URL and passes it as a string
-    recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template("recipe.html", recipes=mongo.db.recipes.find_one(), recipe=recipe)
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    # displays each individual recipe's information
+    # fetches the data based on the _id
+    return render_template("recipe.html",
+    recipes=mongo.db.recipes.find_one(),
+    recipe=recipe)
 
-@app.route('/category')
-def get_cat():
-    return render_template("category.html", recipes=mongo.db.recipes.find())
+# BY CATEGORY
+@app.route('/vegetarian')
+def get_vege():
+    return render_template("vegetarian.html", recipes=mongo.db.recipes.find())
+    return redirect(url_for('show_recipe'))
 
+@app.route('/vegan')
+def get_vegan():
+    return render_template("vegan.html", recipes=mongo.db.recipes.find())
+
+@app.route('/express')
+def get_express():
+    return render_template("express.html", recipes=mongo.db.recipes.find())
+
+
+# USER INTERACTIONS
+# INSERT USER INPUT
 @app.route('/add_recipe')
 def add_recipe():
     return render_template("addrecipe.html", recipes=mongo.db.recipes.find())
@@ -54,8 +71,13 @@ def add_recipe():
 @app.route('/insert_recipe', methods=['POST'])
 def insert_recipe():
 
+    #  if a recipe can be made in 30m or less
+    if int(request.form.get('duration')) <= 30:
+        isUnder30 = True
+    else:
+        isUnder30 = False
+
     recipeDict = {
-        # "date": request.form.get('dateAdded'),  # returns a date selected by user
         "date": datetime.datetime.utcnow(),  # returns the date for today
         "name": request.form.get('name'),
         "imageURL": request.form.get('imageURL'),
@@ -65,6 +87,7 @@ def insert_recipe():
         "portions": int(request.form.get('portions')),
         "isVegan": bool(request.form.get('isVegan')),
         "isVegetarian": bool(request.form.get('isVegetarian')),
+        "isUnder30": bool(isUnder30),
     }
 
     recipe = mongo.db.recipes

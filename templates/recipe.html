@@ -1,33 +1,37 @@
+<!DOCTYPE html>
 {% extends 'base.html' %}
 
 {% block head %}
 {{ super() }}
 {% endblock %}
 
+<!-- displays each individual recipe's information -->
 {% block body %}
-<section>
-    <div class="container">
-        <div class="row">
-            <img id="recipe-image" class="responsive-img" src="{{recipe.imageURL}}" alt="fruits">
-            <h3>{{recipe.name}}</h3>
-            <div class="row">
-                <div class="col s6">
-                    <h5><i class="material-icons prefix">access_time</i> Time to cook: {{recipe.duration}}</h5>
+<section class="container">
+    <div class="row">
+        <div class="col s12 card">
+            <img id="recipe-image" class="card-image" src="{{recipe.imageURL}}" alt="fruits">
+            <h3 class="center-align">{{recipe.name}}</h3>
+            <div class="container">
+                <div class="row">
+                    <div class="col s6 center-align">
+                        <h5><i class="material-icons prefix">access_time</i> Time to cook: {{recipe.duration}}</h5>
+                    </div>
+                    <div class="col s6 center-align">
+                        <h5><i class="material-icons prefix">people</i> Feeds: {{recipe.portions}} people</h5>
+                    </div>
                 </div>
-                <div class="col s6">
-                    <h5><i class="material-icons prefix">people</i> Feeds: {{recipe.portions}} people</h5>
+                <div class="card-content left-align extra-padding">
+                    <h5>Ingredients</h5>
+                    <ul>
+                        {% for ingredient in recipe.ingredients %} 
+                        <li>{{ingredient.capitalize()}}</li> 
+                        {% endfor %}
+                    </ul>
+                    <h5>Instructions</h5>
+                    <p>{{recipe.instructions}}</p>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <h5>Ingredients</h5>
-            <ul>
-                {% for ingredient in recipe.ingredients %} 
-                <li>{{ingredient.capitalize()}}</li> 
-                {% endfor %}
-            </ul>
-            <h5>Instructions</h5>
-            <p>{{recipe.instructions}}</p>
         </div>
     </div>
 </section>

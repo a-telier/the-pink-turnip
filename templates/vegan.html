@@ -7,24 +7,11 @@
 
 {% block body %}
     <section>
-    <!--landing page view needs to be added here-->
-        <div class="landing">
-            <img id="landing-image" src="../static/img/fruits-background.png" alt="fruits">
-            <div class="row">
-                <div id="landing-text" class="col s7 m8 l8">
-                    <h1>The Pink Turnip</h1>
-                    <h3>Meatless, one Monday at the time.</h3>
-                    <!-- <a class="waves-effect waves-light btn teal-text teal lighten-5"><i class="fa fa-envira" aria-hidden="true"></i> Try our vegetarian recipes! </a> -->
-                </div>
-                <div class="col s3 m2 l2"></div>
-            </div>
-        </div>
-    </section>
-    <section>
         <div class="container">
-            <h3>Be inspired by our favorite recipes..</h3>
+            <h3><i class="fa fa-heart" aria-hidden="true"></i> Vegan recipes</h3>
                 <div class="row">
                     {% for recipe in recipes %}
+                    {% if recipe.isVegan == True %}
                     <div class="col s12 m6 l6">
                         <div class="card">
                             <span class="teaser-overlay responsive-img"></span>
@@ -32,8 +19,8 @@
                                 <img class="teaser-image" src="{{ recipe.imageURL }}">
                                 <span class="card-title">{{recipe.name}}</span>
                             </div>
-                            <!--indicator vegan or vegetarian-->
-                            <div class="card-content"> 
+                            <div class="card-content">
+                                <!--indicator vegan or vegetarian-->
                                 <ul class="tabs">
                                     {% if recipe.isVegetarian == True and recipe.isVegan == False %}
                                     <li class="tab half teal-text teal lighten-5">
@@ -57,13 +44,16 @@
                                     {% endif%}
                                 </ul>
                                 <!--indicator duration and portions in text format-->
-                                <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>
+                                {% if recipe.duration != 0 and recipe.portion != 0 %}
+                                    <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>
+                                {% endif %}
                             </div>
                             <div class="card-action">
-                                <a href="/recipe/{{recipe._id}}">Link will go here!</a>
+                                <a href="/recipe/{{recipe._id}}>">Go to recipe!</a>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 </div>
         </div> 

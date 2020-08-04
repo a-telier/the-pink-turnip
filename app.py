@@ -3,7 +3,7 @@ import os
 # import numpy as np
 
 #   full stack framework for template development
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 
 #   libraries to interact with database Mongo DB
 from flask_pymongo import PyMongo, pymongo
@@ -11,9 +11,11 @@ from bson.objectid import ObjectId
 
 #   this code imports env where passwords are stored for ex but not public
 from os import path
+#   to make it more difficult to decrypt passwords
+import bcrypt
 
 #   used in datepicker
-import datetime
+#   import datetime
 
 #   start an instance of Flask
 app = Flask(__name__)
@@ -23,9 +25,10 @@ app = Flask(__name__)
 if path.exists("env.py"):
     import env
 
-# configuration of Database
+#   configuration of Database
 app.config['MONGO_URI'] = os.environ.get('MONGO_URI')
 app.config['MONGODB_NAME'] = os.environ.get('MONGODB_NAME')
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
 #   create an instance of PyMongo
 mongo = PyMongo(app)
@@ -35,6 +38,9 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/home')
 def get_recipe():
+    if 'username' in session:
+        return 'You are logged in as ' + session['username']
+
     return render_template("home.html", recipes=mongo.db.recipes.find())
 
 @app.route('/recipe/<recipe_id>')
@@ -62,8 +68,37 @@ def get_express():
     return render_template("express.html", recipes=mongo.db.recipes.find())
 
 
-# USER INTERACTIONS
-# INSERT USER INPUT
+#   USER INTERACTIONS
+#   LOGIN
+@app.route('/login', methods=['POST'])
+def login():
+    users = mongo.db.users
+    login_user = users.find_one({'name': request.form['username']})
+
+    if login_user:
+        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']).encode('utf-8') == login_user['password'].encode('utf-8'):
+            session['username'] = request.form['username']
+            return redirect(url_for('home'))
+    
+    return 'Invalid username or password'
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        registered_users = users.find_one({'name': request.form['username']})
+        
+        if registered_users is None:
+            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'name': request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('/login'))
+
+        return 'That username already exists'
+
+    return render_template('register.html')
+
+#   INSERT USER INPUT
 @app.route('/add_recipe')
 def add_recipe():
     return render_template("addrecipe.html", recipes=mongo.db.recipes.find())

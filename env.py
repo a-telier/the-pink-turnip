@@ -5,4 +5,3 @@ os.environ['SECRET_KEY'] = 'Domenica16'
 os.environ['MONGODB_NAME'] = 'blog'
 
 os.environ['IP'] = '0.0.0.0'
-os.environ['PORT'] = '8080'

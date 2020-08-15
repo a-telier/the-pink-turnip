@@ -6,6 +6,35 @@
 {% endblock %}
 
 {% block body %}
+<section class="container">
+    <div class="row">
+        <h3>Login to your profile</h3>
+        <p>Add recipes to inspire others on their meat-free dinners.</p>
+    </div>
+    <div class="row">
+        <form action="../login" method="POST"  class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="username" id="username" type="text" class="validate" data-length="25" required>
+                    <label for="username">Username</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="password" id="password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit" name="action">LOGIN</button>
+            </div>
+            <div>
+                <p>You don't have an account?
+                <a href="../register">Sign up here.</a>
+                </p>
+            </div>
+        </form>
+    </div>
+</section>
 {% endblock %}
 
-<h3>THis is the login</h3>

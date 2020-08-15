@@ -33,13 +33,15 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 #   create an instance of PyMongo
 mongo = PyMongo(app)
 
+##########################
+#    GENERAL/DISPLAY PAGES
+##########################
 
-# GENERAL
 @app.route('/')
 @app.route('/home')
 def get_recipe():
     if 'username' in session:
-        return 'You are logged in as ' + session['username']
+        return render_template("home.html", recipes=mongo.db.recipes.find(), message='You are logged in as ' + session['username'])
 
     return render_template("home.html", recipes=mongo.db.recipes.find())
 
@@ -67,20 +69,66 @@ def get_vegan():
 def get_express():
     return render_template("express.html", recipes=mongo.db.recipes.find())
 
+############################
+#    AUTHENTICATION
+############################
 
-#   USER INTERACTIONS
+# REFERENCE CREDITS:
+# Login System ->
+# https://www.youtube.com/watch?v=vVx1737auSE, https://www.youtube.com/watch?v=PYILMiGxpAU
+
+#   PROFILE
+@app.route('/profile')
+def profile():
+
+
+
+    return render_template('profile.html', user=mongo.db.users.find())
+
 #   LOGIN
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    users = mongo.db.users
-    login_user = users.find_one({'name': request.form['username']})
 
-    if login_user:
-        if bcrypt.hashpw(request.form['pass'].encode('utf-8'), login_user['password']).encode('utf-8') == login_user['password'].encode('utf-8'):
-            session['username'] = request.form['username']
-            return redirect(url_for('home'))
+    users = mongo.db.users
+
+    if request.method == 'POST':
+        #   checks if the input matches something in db
+        username = users.find_one({'username': request.form.get('username')})
+        password = users.find_one({'password': request.form.get('password')})
+
+        #   if the input username is different than those in users db
+        #   1) This username is not in db
+        if username != users:
+            print('Username not found!')
+            return redirect(request.url)
+        
+        #   2) This username is not already in db
+        #   we will accept the new username
+        else:
+            login_user = username
+
+        if not password == login_user['password']:
+            print('Password incorrect')
+            return redirect(request.url)
+
+        else:
+            #   assign session value to username
+            session['USERNAME'] = user['username']
+            print('User has been added to session')
+
+            return redirect(url_for('profile'))
+
+    return render_template('login.html')
+
+
+
+
+    # if login_user:
+    #     if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']).encode('utf-8') == login_user['password'].encode('utf-8'):
+    #         session['username'] = request.form['username']
+    #         return redirect(url_for('profile'))
     
-    return 'Invalid username or password'
+    # return 'Invalid username or password'
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
@@ -88,15 +136,26 @@ def register():
         users = mongo.db.users
         registered_users = users.find_one({'name': request.form['username']})
         
+        # if there is no registered user
         if registered_users is None:
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            users.insert({'name': request.form['username'], 'password' : hashpass})
+            # add the new user to the database
+            users.insert({'name' : request.form['username'], 'password' : hashpass})
+            # now session username is the same as in the request form
             session['username'] = request.form['username']
-            return redirect(url_for('/login'))
+            # redirect to the profile page
+            return redirect(url_for('profile'))
 
-        return 'That username already exists'
+        elif registered_users is not None:
+            return redirect(url_for('profile'))
+
+        # return 'That username already exists'
 
     return render_template('register.html')
+
+############################
+#    INTERACT WITH DATABASE
+############################
 
 #   INSERT USER INPUT
 @app.route('/add_recipe')

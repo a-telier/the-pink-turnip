@@ -81,13 +81,18 @@ def get_express():
 @app.route('/profile')
 def profile():
 
+    #   if there is an active session:
+    if session.get('USERNAME', None) is not None:
+        #   get information from db.users
+        username = session.get('USERNAME')
+        return render_template('profile.html', user=mongo.db.users.find_one())
+    else:
+        print("User not in session")
+        return render_template('signin.html')
 
-
-    return render_template('profile.html', user=mongo.db.users.find())
-
-#   LOGIN
-@app.route('/login', methods=['GET', 'POST'])
-def login():
+#   SIGNIN
+@app.route('/signin', methods=['GET', 'POST'])
+def signin():
 
     users = mongo.db.users
 
@@ -118,7 +123,7 @@ def login():
 
             return redirect(url_for('profile'))
 
-    return render_template('login.html')
+    return render_template('signin.html')
 
 
 

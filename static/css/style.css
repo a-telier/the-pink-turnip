@@ -24,7 +24,6 @@ h2, h3{
     position: absolute;
     background-image: url("../img/logo/the-pink-turnip-transparent-logo.png");
     background-size: cover;
-    z-index: 5 !important;
 }
 
 
@@ -41,6 +40,7 @@ h2, h3{
     position: absolute;
     background-repeat: no-repeat;
     background-size: contain;
+    z-index: -1;
 }
 
 #landing-text{
@@ -49,6 +49,12 @@ h2, h3{
     float: left;
     z-index: 2;
 }
+#user-message{
+    position: absolute;
+    display: block;
+    z-index: 5 !important;
+}
+
 /*-----------------------------------teaser*/
 .half{
     width: 50%;

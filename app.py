@@ -33,9 +33,11 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 #   create an instance of PyMongo
 mongo = PyMongo(app)
 
-##########################
+
+
+###########################################
 #    GENERAL/DISPLAY PAGES
-##########################
+###########################################
 
 @app.route('/')
 @app.route('/home')
@@ -69,30 +71,33 @@ def get_vegan():
 def get_express():
     return render_template("express.html", recipes=mongo.db.recipes.find())
 
-############################
+
+
+#############################################
 #    AUTHENTICATION
-############################
+#############################################
 
 # REFERENCE CREDITS:
 # Login System ->
 # https://www.youtube.com/watch?v=vVx1737auSE, https://www.youtube.com/watch?v=PYILMiGxpAU
 
 #   PROFILE
-@app.route('/profile')
+@app.route('/user/profile', methods=['GET'])
 def profile():
 
     #   if there is an active session:
     if session.get('USERNAME', None) is not None:
         #   get information from db.users
         username = session.get('USERNAME')
-        return render_template('profile.html', user=mongo.db.users.find_one())
+        user = mongo.db.users.find_one()
+        return render_template('profile.html', user=user)
     else:
         print("User not in session")
-        return render_template('signin.html')
+        return render_template('login')
 
 #   SIGNIN
-@app.route('/signin', methods=['GET', 'POST'])
-def signin():
+@app.route('/user/login', methods=['GET', 'POST'])
+def login():
 
     users = mongo.db.users
 
@@ -104,38 +109,29 @@ def signin():
         #   if the input username is different than those in users db
         #   1) This username is not in db
         if username != users:
-            print('Username not found!')
-            return redirect(request.url)
-        
+            print('Username not found, you need to create an account!')
+            return redirect(url_for('/user/register'))
         #   2) This username is not already in db
         #   we will accept the new username
         else:
             login_user = username
 
         if not password == login_user['password']:
-            print('Password incorrect')
-            return redirect(request.url)
+            print('Password incorrect, try again')
+            return redirect(url_for('/user/login'))
 
         else:
             #   assign session value to username
-            session['USERNAME'] = user['username']
+            session['USERNAME'] = mongo.db.users['username']
             print('User has been added to session')
 
-            return redirect(url_for('profile'))
+            return redirect(url_for('/user/profile'))
 
-    return render_template('signin.html')
-
-
+    return render_template('login.html')
 
 
-    # if login_user:
-    #     if bcrypt.hashpw(request.form['password'].encode('utf-8'), login_user['password']).encode('utf-8') == login_user['password'].encode('utf-8'):
-    #         session['username'] = request.form['username']
-    #         return redirect(url_for('profile'))
-    
-    # return 'Invalid username or password'
 
-@app.route('/register', methods=['POST', 'GET'])
+@app.route('/user/register', methods=['POST', 'GET'])
 def register():
     if request.method == 'POST':
         users = mongo.db.users
@@ -149,18 +145,20 @@ def register():
             # now session username is the same as in the request form
             session['username'] = request.form['username']
             # redirect to the profile page
-            return redirect(url_for('profile'))
+            return redirect(url_for('/user/profile'))
 
         elif registered_users is not None:
-            return redirect(url_for('profile'))
+            return redirect(url_for('/user/profile'))
 
         # return 'That username already exists'
 
     return render_template('register.html')
 
-############################
+
+
+#############################################
 #    INTERACT WITH DATABASE
-############################
+#############################################
 
 #   INSERT USER INPUT
 @app.route('/add_recipe')

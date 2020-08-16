@@ -49,23 +49,41 @@ mongo = PyMongo(app)
 #   SIGNIN TO YOUR ACCOUNT
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    #   if user is entering login information
-    if request.method == "POST":
-
-        users = mongo.db.users.find()
-        current_user = {
-            "username": request.form.get("username"),
-            "password": request.form.get("password"),
-            }
-
+    if request.method == "GET":
         #   the user is already logged in
         if "username" in session:
             print("You are already sign in, welcome " + session["username"])
             return redirect(url_for("profile"))
-        #   the user is not logged in
+
+    #   if user is entering login information
+    if request.method == "POST":
+        #   creates a new object
+        current_user = {
+            "username": request.form.get("username"),
+            "password": request.form.get("password"),
+        }
+        #   looks for username with current inputted username
+        user = mongo.db.users.find_one({"username": current_user["username"]})
+
+        #   check if the username exists in db
+        #   if user exists:
+        if user is not None:
+            #   we will check if the password matches our record
+            #   password matches
+            if current_user["password"] == user["password"]:
+                print("You have entered the correct password, and will go to profile")
+                #   assign username entered to current session
+                session['username'] = request.form['username']
+                return redirect(url_for("profile"))
+            #   password does not match
+            else:
+                print("You have entered the wrong password, try again.")
+                return redirect(request.url)
+
+        #   user does not exist:
         else:
-            #   assign username entered to current session
-            session['username'] = request.form['username']
+            print("We could not find your username, please register first.")
+            return redirect(url_for("register"))
 
     else:
         return render_template("users/login.html")
@@ -73,39 +91,39 @@ def login():
 @app.route("/sign-out")
 def sign_out():
     session.pop("username", None)
+    print("User has been sign out")
     return redirect(url_for("login"))
 
 #   REGISTER A NEW USER
 
-@app.route('/new_user', methods=['GET'])
-def new_user():
-    return render_template("users/register.html")
-
 
 @app.route('/register', methods=['POST', 'GET'])
 def register():
-    # return render_template("users/register.html")
-    username = request.form.get("username")
-    password = request.form.get("password")
-    user = mongo.db.users.find({"username": username})
+    if request.method == "POST":
+        # return render_template("users/register.html")
+        username = request.form.get("username")
+        password = request.form.get("password")
+        user = mongo.db.users.find({"username": username})
 
-    new_user = {
-        "username": username,
-        "password": password,
-    }
+        new_user = {
+            "username": username,
+            "password": password,
+        }
 
-    #   checks if the usernmae input is already in db
-    #   user does not exist in database
-    if user is not None:
-        mongo.db.users.insert_one(new_user)
-        print("New user registered, welcome!")
-        return redirect(url_for("profile"))
+        #   checks if the usernmae input is already in db
+        #   user does not exist in database
+        if user is not None:
+            mongo.db.users.insert_one(new_user)
+            print("New user registered, welcome!")
+            return redirect(url_for("profile"))
+        else:
+            #   user already exists in the database
+            print("The user already exists, please choose another username")
+            return redirect(url_for("register"))
+
     else:
-        #   user already exists in the database
-        #   please login to your account
-        print("The user already exists, please choose another username")
-        return redirect(url_for("new_user"))
-
+        #   the method is GET, therefore do:
+        return render_template("users/register.html")
 
 #   YOUR PROFILE
 @app.route('/profile', methods=['GET'])

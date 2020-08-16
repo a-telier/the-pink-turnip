@@ -34,6 +34,93 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 mongo = PyMongo(app)
 
 
+#############################################
+#    AUTHENTICATION
+#############################################
+
+#   REFERENCE CREDITS:
+#   Login System ->
+#   https://www.youtube.com/watch?v=vVx1737auSE, https://www.youtube.com/watch?v=PYILMiGxpAU
+#   https://pythonise.com/series/learning-flask/flask-session-object
+#   Sessions in Flask ->
+#   https://www.youtube.com/watch?v=iIhAfX4iek0&t=432s
+
+#   SIGNIN TO YOUR ACCOUNT
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == "POST":
+
+        session['username'] = request.form['username']
+        print("This is your session username " + session["username"])
+
+        if session['username'] in session:
+            print("This user is already in session")
+            return redirect(url_for("profile"))
+        else:
+            return redirect(url_for("login"))
+
+        if session['username'] not in session:
+            users = mongo.db.users.find()
+            username = request.form.get("username")
+            password = request.form.get("password")
+
+            if username in users and password in users:
+                print("This user exists in our database, you will be redirected to your profile!")
+                return redirect(url_for("profile"))
+            else:
+                print("Sorry, we can't compute. Please login to your profile.")
+                return redirect(url_for("login"))
+        else:
+            return redirect(request.url)
+
+            
+    return render_template("users/login.html")
+
+#   REGISTER A NEW USER
+
+
+@app.route('/new_user', methods=['GET'])
+def new_user():
+    return render_template("users/register.html")
+
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    # return render_template("users/register.html")
+    username = request.form.get("username")
+    password = request.form.get("password")
+    user = mongo.db.users.find({"username": username})
+
+    new_user = {
+        "username": username,
+        "password": password,
+    }
+
+    #   checks if the usernmae input is already in db
+    #   user does not exist in database
+    if user is not None:
+        mongo.db.users.insert_one(new_user)
+        print("New user registered, welcome!")
+        return redirect(url_for("get_vege"))
+    else:
+        #   user already exists in the database
+        #   please login to your account
+        print("The user already exists, please choose another username")
+        return redirect(url_for("get_vegan"))
+
+#   YOUR PROFILE
+@app.route('/profile', methods=['GET'])
+def profile():
+
+    user = session["username"]
+
+    if not session.get("USERNAME") is None:
+        username = session.get("USERNAME")
+        return render_template("users/profile.html", user=user)
+    else:
+        print("No username found in session")
+        return redirect(url_for("login"))
+
 
 ###########################################
 #    GENERAL/DISPLAY PAGES
@@ -70,90 +157,6 @@ def get_vegan():
 @app.route('/express')
 def get_express():
     return render_template("express.html", recipes=mongo.db.recipes.find())
-
-
-
-#############################################
-#    AUTHENTICATION
-#############################################
-
-# REFERENCE CREDITS:
-# Login System ->
-# https://www.youtube.com/watch?v=vVx1737auSE, https://www.youtube.com/watch?v=PYILMiGxpAU
-
-#   PROFILE
-@app.route('/user/profile', methods=['GET'])
-def profile():
-
-    #   if there is an active session:
-    if session.get('USERNAME', None) is not None:
-        #   get information from db.users
-        username = session.get('USERNAME')
-        user = mongo.db.users.find_one()
-        return render_template('profile.html', user=user)
-    else:
-        print("User not in session")
-        return render_template('login')
-
-#   SIGNIN
-@app.route('/user/login', methods=['GET', 'POST'])
-def login():
-
-    users = mongo.db.users
-
-    if request.method == 'POST':
-        #   checks if the input matches something in db
-        username = users.find_one({'username': request.form.get('username')})
-        password = users.find_one({'password': request.form.get('password')})
-
-        #   if the input username is different than those in users db
-        #   1) This username is not in db
-        if username != users:
-            print('Username not found, you need to create an account!')
-            return redirect(url_for('/user/register'))
-        #   2) This username is not already in db
-        #   we will accept the new username
-        else:
-            login_user = username
-
-        if not password == login_user['password']:
-            print('Password incorrect, try again')
-            return redirect(url_for('/user/login'))
-
-        else:
-            #   assign session value to username
-            session['USERNAME'] = mongo.db.users['username']
-            print('User has been added to session')
-
-            return redirect(url_for('/user/profile'))
-
-    return render_template('login.html')
-
-
-
-@app.route('/user/register', methods=['POST', 'GET'])
-def register():
-    if request.method == 'POST':
-        users = mongo.db.users
-        registered_users = users.find_one({'name': request.form['username']})
-        
-        # if there is no registered user
-        if registered_users is None:
-            hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
-            # add the new user to the database
-            users.insert({'name' : request.form['username'], 'password' : hashpass})
-            # now session username is the same as in the request form
-            session['username'] = request.form['username']
-            # redirect to the profile page
-            return redirect(url_for('/user/profile'))
-
-        elif registered_users is not None:
-            return redirect(url_for('/user/profile'))
-
-        # return 'That username already exists'
-
-    return render_template('register.html')
-
 
 
 #############################################

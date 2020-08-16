@@ -17,9 +17,9 @@
 
 // from Code Institute - As of 20th June, 2019
 // there is an issue with the current version of Materialize and Chrome version 73 onwards
-    document.getElementById("matfix").addEventListener("click", function(e) {
-        e.stopPropagation();
-    });
+    // document.getElementById("matfix").addEventListener("click", function(e) {
+    //     e.stopPropagation();
+    // });
 
 //  FORM
 //  SELECTOR

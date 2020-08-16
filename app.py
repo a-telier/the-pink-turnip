@@ -40,7 +40,8 @@ mongo = PyMongo(app)
 
 #   REFERENCE CREDITS:
 #   Login System ->
-#   https://www.youtube.com/watch?v=vVx1737auSE, https://www.youtube.com/watch?v=PYILMiGxpAU
+#   https://www.youtube.com/watch?v=vVx1737auSE
+#   https://www.youtube.com/watch?v=PYILMiGxpAU
 #   https://pythonise.com/series/learning-flask/flask-session-object
 #   Sessions in Flask ->
 #   https://www.youtube.com/watch?v=iIhAfX4iek0&t=432s
@@ -48,36 +49,33 @@ mongo = PyMongo(app)
 #   SIGNIN TO YOUR ACCOUNT
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    #   if user is entering login information
     if request.method == "POST":
 
-        session['username'] = request.form['username']
-        print("This is your session username " + session["username"])
+        users = mongo.db.users.find()
+        current_user = {
+            "username": request.form.get("username"),
+            "password": request.form.get("password"),
+            }
 
-        if session['username'] in session:
-            print("This user is already in session")
+        #   the user is already logged in
+        if "username" in session:
+            print("You are already sign in, welcome " + session["username"])
             return redirect(url_for("profile"))
+        #   the user is not logged in
         else:
-            return redirect(url_for("login"))
+            #   assign username entered to current session
+            session['username'] = request.form['username']
 
-        if session['username'] not in session:
-            users = mongo.db.users.find()
-            username = request.form.get("username")
-            password = request.form.get("password")
+    else:
+        return render_template("users/login.html")
 
-            if username in users and password in users:
-                print("This user exists in our database, you will be redirected to your profile!")
-                return redirect(url_for("profile"))
-            else:
-                print("Sorry, we can't compute. Please login to your profile.")
-                return redirect(url_for("login"))
-        else:
-            return redirect(request.url)
-
-            
-    return render_template("users/login.html")
+@app.route("/sign-out")
+def sign_out():
+    session.pop("username", None)
+    return redirect(url_for("login"))
 
 #   REGISTER A NEW USER
-
 
 @app.route('/new_user', methods=['GET'])
 def new_user():
@@ -101,25 +99,18 @@ def register():
     if user is not None:
         mongo.db.users.insert_one(new_user)
         print("New user registered, welcome!")
-        return redirect(url_for("get_vege"))
+        return redirect(url_for("profile"))
     else:
         #   user already exists in the database
         #   please login to your account
         print("The user already exists, please choose another username")
-        return redirect(url_for("get_vegan"))
+        return redirect(url_for("new_user"))
+
 
 #   YOUR PROFILE
 @app.route('/profile', methods=['GET'])
 def profile():
-
-    user = session["username"]
-
-    if not session.get("USERNAME") is None:
-        username = session.get("USERNAME")
-        return render_template("users/profile.html", user=user)
-    else:
-        print("No username found in session")
-        return redirect(url_for("login"))
+    return render_template("users/profile.html", user=mongo.db.users.find())
 
 
 ###########################################

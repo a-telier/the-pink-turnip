@@ -15,7 +15,7 @@ from os import path
 import bcrypt
 
 #   used in datepicker
-#   import datetime
+import datetime
 
 #   start an instance of Flask
 app = Flask(__name__)
@@ -128,7 +128,61 @@ def register():
 #   YOUR PROFILE
 @app.route('/profile', methods=['GET'])
 def profile():
-    return render_template("users/profile.html", user=mongo.db.users.find())
+    if "username" in session:
+        print("User is logged in, display the profile page of user.")
+        current_user = {
+            "username": session["username"],
+        }
+        #   looks for username with current inputted username
+        user = mongo.db.recipes.find_one({"username": current_user["username"]})
+
+        return render_template("users/profile.html",
+            recipes=mongo.db.recipes.find())
+
+    else:
+        print("You need to login to access your profile page.")
+        return redirect(url_for("login"))
+
+#############################################
+#    INTERACT WITH DATABASE
+#############################################
+
+#   INSERT USER INPUT
+@app.route('/add_recipe')
+def add_recipe():
+    if "username" in session:
+        print("User is logged in, display the profile page of user.")
+        return render_template("addrecipe.html", recipes=mongo.db.recipes.find())
+    else:
+        print("You need to login to access your profile page.")
+        return redirect(url_for("login"))
+
+@app.route('/insert_recipe', methods=['POST'])
+def insert_recipe():
+
+    #  if a recipe can be made in 30m or less
+    if int(request.form.get('duration')) <= 30:
+        isUnder30 = True
+    else:
+        isUnder30 = False
+
+    recipeDict = {
+        "date": datetime.datetime.now(),  # returns the date for today
+        "name": request.form.get('name'),
+        "imageURL": request.form.get('imageURL'),
+        "ingredients": str(request.form.get('ingredients')).split(sep=", "),
+        "instructions": str(request.form.get('instructions')).split(sep=", "),
+        "duration": int(request.form.get('duration')),
+        "portions": int(request.form.get('portions')),
+        "isVegan": bool(request.form.get('isVegan')),
+        "isVegetarian": bool(request.form.get('isVegetarian')),
+        "isUnder30": bool(isUnder30),
+        "username": session["username"],
+    }
+
+    recipe = mongo.db.recipes
+    recipe.insert_one(recipeDict)
+    return redirect(url_for('get_recipe'))
 
 
 ###########################################
@@ -167,41 +221,6 @@ def get_vegan():
 def get_express():
     return render_template("express.html", recipes=mongo.db.recipes.find())
 
-
-#############################################
-#    INTERACT WITH DATABASE
-#############################################
-
-#   INSERT USER INPUT
-@app.route('/add_recipe')
-def add_recipe():
-    return render_template("addrecipe.html", recipes=mongo.db.recipes.find())
-
-@app.route('/insert_recipe', methods=['POST'])
-def insert_recipe():
-
-    #  if a recipe can be made in 30m or less
-    if int(request.form.get('duration')) <= 30:
-        isUnder30 = True
-    else:
-        isUnder30 = False
-
-    recipeDict = {
-        "date": datetime.datetime.utcnow(),  # returns the date for today
-        "name": request.form.get('name'),
-        "imageURL": request.form.get('imageURL'),
-        "ingredients": str(request.form.get('ingredients')).split(sep=", "),
-        "instructions": str(request.form.get('instructions')).split(sep=", "),
-        "duration": int(request.form.get('duration')),
-        "portions": int(request.form.get('portions')),
-        "isVegan": bool(request.form.get('isVegan')),
-        "isVegetarian": bool(request.form.get('isVegetarian')),
-        "isUnder30": bool(isUnder30),
-    }
-
-    recipe = mongo.db.recipes
-    recipe.insert_one(recipeDict)
-    return redirect(url_for('get_recipe'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

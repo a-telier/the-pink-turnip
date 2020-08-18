@@ -8,9 +8,67 @@
 {% block body %}
 
 <section class="container">
+    <!-- Here goes the user information  -->
     <div>
-        <h3>Welcome {{session.username}}</h3>
-        <p> This is your profile page!</p>
+        <h3>Welcome {{session.username}} ! </h3>
+        <p>Our mission as The Pink Turnip is to inspire people like you and me, who probably have not been exposed to vegetarian dishes before, to start a more veggie-friendly lifestyle! For that reason, we rely heavily on our community (you!) to share your awesome recipes with others.</p>
+        <p>We look forward to see what is... 'cooking' in your kitchen!</p>
+    </div>
+
+    <!-- Here go all the recipes that the username has created -->
+    <div>
+        <div class="row">
+            <h3>Your shared recipes <i class="fas fa-utensil-spoon"></i></h3>
+        </div>
+        <div>
+            {% for recipe in recipes %}
+                {% if recipe.username == session.username %}
+                    <div class="row">
+                        <div class="col s12 m6 l6">
+                            <div class="card">
+                                <span class="teaser-overlay responsive-img"></span>
+                                <div class="card-image">
+                                    <img class="teaser-image" src="{{ recipe.imageURL }}">
+                                    <span class="card-title">{{recipe.name}}</span>
+                                </div>
+                                <!--indicator vegan or vegetarian-->
+                                <div class="card-content"> 
+                                    <ul class="tabs">
+                                        {% if recipe.isVegetarian == True and recipe.isVegan == False %}
+                                        <li class="tab half teal-text teal lighten-5">
+                                            <p><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian </p>
+                                        </li>
+                                        {% elif recipe.isVegan == True and recipe.isVegetarian == False %}
+                                        <li class="tab half teal-text teal lighten-5">
+                                            <p><i class="fa fa-heart" aria-hidden="true"></i> Vegan </p>
+                                        </li>
+                                        {% elif recipe.isVegetarian == True and recipe.isVegan == True %}
+                                        <li class="tab half teal-text teal lighten-5">
+                                            <p><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian </p>
+                                        </li>
+                                        <li class="tab half teal-text teal lighten-5">
+                                            <p><i class="fa fa-heart" aria-hidden="true"></i> Vegan </p>
+                                        </li>
+                                        {% else %}
+                                        <li class="tab red-text red lighten-5">
+                                            <p><i class="fa fa-times" aria-hidden="true"></i> Not Vegetarian nor vegan </p>
+                                        </li>
+                                        {% endif%}
+                                    </ul>
+                                    <!--indicator duration and portions in text format-->
+                                    <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>
+                                </div>
+                                <div class="card-action">
+                                    <a href="/recipe/{{recipe._id}}">MAKE THIS RECIPE! <i class="fas fa-utensils"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elif recipe.username is none %}
+                    <p>"{{session.username}}, you have not created any recipes yet! Click on this link or use the above to start sharing your recipes."</p>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 </section>
 {% endblock %}

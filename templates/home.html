@@ -9,20 +9,22 @@
     <section>
     <!--landing page view needs to be added here-->
         <div class="landing">
-            <img id="landing-image" src="../static/img/fruits-background.png" alt="fruits">
+            <div id="landing-image"></div>
             <div class="row">
                 <div id="landing-text" class="col s7 m8 l8">
                     <h1>The Pink Turnip</h1>
-                    <h3>Meatless, one Monday at the time.</h3>
+                    <h4>Meatless, one Monday at the time.</h4>
+                    <div id="user-message">
+                        <p>{{message}}</p>
+                    </div>
                     <!-- <a class="waves-effect waves-light btn teal-text teal lighten-5"><i class="fa fa-envira" aria-hidden="true"></i> Try our vegetarian recipes! </a> -->
                 </div>
-                <div class="col s3 m2 l2"></div>
             </div>
         </div>
     </section>
     <section>
         <div class="container">
-            <h3>Be inspired by our favorite recipes..</h3>
+            <h4>Be inspired by our favorite recipes..</h4>
                 <div class="row">
                     {% for recipe in recipes %}
                     <div class="col s12 m6 l6">

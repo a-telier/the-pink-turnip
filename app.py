@@ -193,7 +193,8 @@ def insert_recipe():
 @app.route('/home')
 def get_recipe():
     if 'username' in session:
-        return render_template("home.html", recipes=mongo.db.recipes.find(), message='You are logged in as ' + session['username'])
+        return render_template("home.html", recipes=mongo.db.recipes.find(),
+        message='Welcome, you are logged in as ' + session['username'])
 
     return render_template("home.html", recipes=mongo.db.recipes.find())
 

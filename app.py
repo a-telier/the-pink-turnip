@@ -205,7 +205,7 @@ def show_recipe(recipe_id):
     # displays each individual recipe's information
     # fetches the data based on the _id
     return render_template("recipe.html",
-    recipes=mongo.db.recipes.find_one(),
+    recipes=mongo.db.recipes.find(),
     recipe=recipe)
 
 # BY CATEGORY
@@ -217,10 +217,12 @@ def get_vege():
 @app.route('/vegan')
 def get_vegan():
     return render_template("vegan.html", recipes=mongo.db.recipes.find())
+    return redirect(url_for('show_recipe'))
 
 @app.route('/express')
 def get_express():
     return render_template("express.html", recipes=mongo.db.recipes.find())
+    return redirect(url_for('show_recipe'))
 
 
 if __name__ == '__main__':

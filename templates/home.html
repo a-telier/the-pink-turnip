@@ -28,11 +28,12 @@
                     {% for recipe in recipes %}
                     <div class="col s12 m6 l6">
                         <div class="card">
-                            <span class="teaser-overlay responsive-img"></span>
+                        <a href="/recipe/{{recipe._id}}">
                             <div class="card-image">
                                 <img class="teaser-image" src="{{ recipe.imageURL }}">
                                 <span class="card-title">{{recipe.name}}</span>
                             </div>
+                        </a>
                             <!--indicator vegan or vegetarian-->
                             <div class="card-content"> 
                                 <ul class="tabs">

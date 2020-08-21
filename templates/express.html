@@ -8,7 +8,8 @@
 {% block body %}
     <section>
         <div class="container">
-            <h3><i class="far fa-clock" aria-hidden="true"></i> Quick bites: recipes that can be made in 30 minutes or less</h3>
+            <h3><i class="far fa-clock" aria-hidden="true"></i> Quick bites:</h3>
+            <h4>Recipes that can be made in 30min or less!</h4>
                 <div class="row">
                     {% for recipe in recipes %}
                     {% if recipe.isUnder30 == True %}
@@ -49,7 +50,7 @@
                                 {% endif %}
                             </div>
                             <div class="card-action">
-                                <a href="/recipe/{{recipe._id}}>">Go to recipe!</a>
+                                <a href="/recipe/{{recipe._id}}">Go to recipe!</a>
                             </div>
                         </div>
                     </div>

@@ -5,9 +5,10 @@
 {{ super() }}
 {% endblock %}
 
-<!-- displays each individual recipe's information -->
 {% block body %}
+
 <section class="container">
+    <!-- displays each individual recipe's information -->
     <div class="row">
         <div class="col s12 card">
             <img id="recipe-image" class="card-image" src="{{recipe.imageURL}}" alt="fruits">
@@ -28,11 +29,37 @@
                         <li>{{ingredient.capitalize()}}</li> 
                         {% endfor %}
                     </ul>
+                </div>
+                <div>
                     <h5>Instructions</h5>
-                    <p>{{recipe.instructions}}</p>
+                    <ol>
+                        {% for instruction in recipe.instructions %}
+                        <li>{{instruction.capitalize()}}</li>
+                        {% endfor %}
+                    </ol>
                 </div>
             </div>
         </div>
     </div>
+    <!-- displays other recipes in the same category -->
+            <div class="row">
+            <h4>Other recipes you might like..</h4>
+                <div class="row">
+                    {% for recipe in recipes %}
+                            {% if loop.index > 3 %}
+                            <div class="col s12 m4 l4">
+                                <div class="card">
+                                    <div class="card-image">
+                                        <a href="/recipe/{{recipe._id}}" target="_self">
+                                        <img class="teaser-image" src="{{ recipe.imageURL }}">
+                                        <span class="card-title">{{recipe.name}}</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                    {% endfor %}
+                </div>
+        </div> 
 </section>
 {% endblock %}

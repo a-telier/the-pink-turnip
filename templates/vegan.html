@@ -8,7 +8,7 @@
 {% block body %}
     <section>
         <div class="container">
-            <h3><i class="fa fa-heart" aria-hidden="true"></i> Vegan recipes</h3>
+            <h3> Vegan recipes <i class="fa fa-heart" aria-hidden="true"></i></h3>
                 <div class="row">
                     {% for recipe in recipes %}
                     {% if recipe.isVegan == True %}
@@ -49,7 +49,7 @@
                                 {% endif %}
                             </div>
                             <div class="card-action">
-                                <a href="/recipe/{{recipe._id}}>">Go to recipe!</a>
+                                <a href="/recipe/{{recipe._id}}">Go to recipe!</a>
                             </div>
                         </div>
                     </div>

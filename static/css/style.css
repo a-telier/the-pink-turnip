@@ -16,6 +16,11 @@ h2, h3, h4, h5, h6{
     font-family: Indie Flower;
 }
 
+ul > li{
+    display: list-item;
+    list-style-type: circle;
+}
+
 /*--------------------------------------------/base*/
 /*-----------------------------------navigation*/
 #pink-turnip-logo{
@@ -117,8 +122,11 @@ h2, h3, h4, h5, h6{
 
 /*ipad screens only - under 770px width*/
 @media screen and (max-width: 768px){
+    h1{
+        font-size: 3em;
+    }
     #landing-image{
-        height: 125vw;
+        height: 140vw;
         background-image: url("../img/pink-background-vertical.png");
     }
 }

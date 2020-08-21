@@ -36,25 +36,34 @@
     
 <!--Navigation-->
 {% block navbar %}
-    <nav class="row">
-        <div class="nav-wrapper col s12 m12 l12 xl12 pink darken-1">
-            <a id="pink-turnip-logo" class="brand-logo" src="../static/img/the-pink-turnip-transparent-logo.png"></a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="../home">Home</a></li>
-                <li><a href="{{ url_for('get_vege')}}"><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian</a></li>
-                <li><a href="{{ url_for('get_vegan')}}"><i class="fa fa-heart" aria-hidden="true"></i> Vegan</a></li>
-                <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock" aria-hidden="true"></i> Express (30m or less!)</a></li>
-                <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle" aria-hidden="true"></i> My profile</a></li>
+            <nav class="nav-wrapper pink darken-1">
+                <a href="../home" class="brand-logo" id="pink-turnip-logo" src="../static/img/the-pink-turnip-transparent-logo.png"></a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="../home">Home</a></li>
+                    <li><a href="{{ url_for('get_vege')}}"><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian</a></li>
+                    <li><a href="{{ url_for('get_vegan')}}"><i class="fa fa-heart" aria-hidden="true"></i> Vegan</a></li>
+                    <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock" aria-hidden="true"></i> Express (30m or less!)</a></li>
+                    <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle" aria-hidden="true"></i> My profile</a></li>
                     {% if 'username' not in session %}
                     <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
                     {% else %}
                     <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
                     {% endif %}
-                <!-- <li><a href="../add_recipe"><i class="fa fa-pencil" aria-hidden="true"></i> Add your own!</a></li> -->
-            </ul>
-        </div>
-    </nav>
+                </ul>
+            </nav>
+    <ul class="sidenav" id="mobile-demo">
+        <li><a href="../home">Home</a></li>
+        <li><a href="{{ url_for('get_vege')}}"><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian</a></li>
+        <li><a href="{{ url_for('get_vegan')}}"><i class="fa fa-heart" aria-hidden="true"></i> Vegan</a></li>
+        <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock" aria-hidden="true"></i> Express (30m or less!)</a></li>
+        <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle" aria-hidden="true"></i> My profile</a></li>
+        {% if 'username' not in session %}
+        <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        {% else %}
+        <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+        {% endif %}
+    </ul>
 {% endblock %}
 </head>
 

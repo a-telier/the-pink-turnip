@@ -1,25 +1,14 @@
+//  NAV BAR
+//  document.addEventListener('DOMContentLoaded', function() {
+//     var elems = document.querySelectorAll('.sidenav');
+//     var instances = M.Sidenav.init(elems, options);
+//   });
 
-//ADDRECIPE template/form
-//DATEPICKER --> not used anymore, using .now function instead
-    // document.addEventListener('DOMContentLoaded', function() {
-    //     var elems = document.querySelectorAll('.datepicker');
-    //     var instances = M.Datepicker.init(elems, options);
-    // });
-    //   $(document).ready(function(){
-    //     $('.datepicker').datepicker();
-    //   });
-    // $(document).ready(function () {
-    //     $(".datepicker").pickadate({
-    //         format: "dd/mm/yyyy",
-    //         setDefaultDate: true
-    //     });
-    // });
+  // Or with jQuery
 
-// from Code Institute - As of 20th June, 2019
-// there is an issue with the current version of Materialize and Chrome version 73 onwards
-    // document.getElementById("matfix").addEventListener("click", function(e) {
-    //     e.stopPropagation();
-    // });
+  $(document).ready(function(){
+    $('.sidenav').sidenav();
+  });
 
 //  FORM
 //  SELECTOR

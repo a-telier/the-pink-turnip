@@ -8,6 +8,7 @@ body{
     font-family: Lato, sans-serif important!;
 }
 h1{
+    font-size: 3.8em;
     font-family: Montserrat;
     font-weight: 800;
 }
@@ -30,12 +31,12 @@ h2, h3, h4, h5, h6{
 /*--------------------------------------------/home*/
 /*-----------------------------------landing*/
 .landing{
-    height: 60vw;
+    height: 50vw;
     width: 100%;
 }
 
 #landing-image{
-    height: 600px;
+    height: 50vw;
     width: 100%;
     background-image: url("../img/pink-background-horizontal.png") !important;
     background-repeat: no-repeat;
@@ -117,7 +118,7 @@ h2, h3, h4, h5, h6{
 /*ipad screens only - under 770px width*/
 @media screen and (max-width: 768px){
     #landing-image{
-        height: 75vw;
+        height: 125vw;
         background-image: url("../img/pink-background-vertical.png");
     }
 }

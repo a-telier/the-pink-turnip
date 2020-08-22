@@ -208,7 +208,7 @@ def show_recipe(recipe_id):
     recipes=mongo.db.recipes.find(),
     recipe=recipe)
 
-# BY CATEGORY
+#   BY CATEGORY
 @app.route('/vegetarian')
 def get_vege():
     return render_template("vegetarian.html", recipes=mongo.db.recipes.find())
@@ -223,6 +223,12 @@ def get_vegan():
 def get_express():
     return render_template("express.html", recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
+
+###########################################
+#    ERROR HANDLING
+###########################################
+#   REFERENCE CREDITS:
+#   https://flask.palletsprojects.com/en/1.1.x/errorhandling/
 
 
 if __name__ == '__main__':

@@ -13,10 +13,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/fec8644327.js" crossorigin="anonymous"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    
     <!--favicon-->
     <link rel="apple-touch-icon" sizes="180x180" href="../static/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon/favicon-32x32.png">
@@ -30,40 +27,49 @@
     </style>
 
     <!--javascript libraries-->
-    <script src="{{url_for('static', filename='js/index.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/fec8644327.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 
 {% endblock %}
     
-<!--Navigation-->
+<!--Navigation menu-->
+
 {% block navbar %}
-            <nav class="nav-wrapper pink darken-1">
-                <a href="../home" class="brand-logo" id="pink-turnip-logo" src="../static/img/the-pink-turnip-transparent-logo.png"></a>
-                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="../home">Home</a></li>
-                    <li><a href="{{ url_for('get_vege')}}"><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian</a></li>
-                    <li><a href="{{ url_for('get_vegan')}}"><i class="fa fa-heart" aria-hidden="true"></i> Vegan</a></li>
-                    <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock" aria-hidden="true"></i> Express (30m or less!)</a></li>
-                    <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle" aria-hidden="true"></i> My profile</a></li>
-                    {% if 'username' not in session %}
-                    <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-                    {% else %}
-                    <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-    <ul class="sidenav" id="mobile-demo">
-        <li><a href="../home">Home</a></li>
-        <li><a href="{{ url_for('get_vege')}}"><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian</a></li>
-        <li><a href="{{ url_for('get_vegan')}}"><i class="fa fa-heart" aria-hidden="true"></i> Vegan</a></li>
-        <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock" aria-hidden="true"></i> Express (30m or less!)</a></li>
-        <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle" aria-hidden="true"></i> My profile</a></li>
-        {% if 'username' not in session %}
-        <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-        {% else %}
-        <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
-        {% endif %}
-    </ul>
+  <nav class="nav-wrapper pink darken-1">
+    <a href="../home" class="brand-logo" id="pink-turnip-logo" src="../static/img/the-pink-turnip-transparent-logo.png"></a>
+    <a data-target="mobile-links" class="sidenav-trigger">
+    <i class="material-icons">menu</i>
+    </a>
+        <!-- Dropdown Trigger -->
+        <ul class="right hide-on-med-and-down">   
+            <li><a href="{{ url_for('get_vege')}}"><i class="fa fa-envira"></i> Vegetarian</a></li>
+            <li><a href="{{ url_for('get_vegan')}}"><i class="fa fa-heart"></i> Vegan</a></li>
+            <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock"></i> Express (30m or less!)</a></li>
+            {% if 'username' not in session %}
+            <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            {% else %}
+            <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+            {% endif %}
+        </ul>
+  </nav>
+
+  <!--Mobile navigation menu-->
+        <ul class="sidenav" id="mobile-links">
+        <div class="container">
+            <li><a href="../home">Home</a></li>
+            <li><a href="{{ url_for('get_vege')}}"><i class="fa fa-envira"></i> Vegetarian</a></li>
+            <li><a href="{{ url_for('get_vegan')}}"><i class="fa fa-heart"></i> Vegan</a></li>
+            <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock"></i> Express (30m or less!)</a></li>
+            {% if 'username' not in session %}
+            <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            {% else %}
+            <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+            {% endif %}
+        </div>
+        </ul>
 {% endblock %}
 </head>
 

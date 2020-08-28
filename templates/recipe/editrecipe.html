@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block body %}
+<section class="container">
+    <div class="row">
+        <h3>Edit your recipe</h3>
+        <p>Help other users find a vegetarian or vegan recipe.</p>
+    </div>
+    <div class="row">
+        <form action="{{ url_for('insert_recipe') }}" method="POST"  class="col s12">
+            <!-- default date to 'today' in app.py instead of letting user select own date 
+                <div class="row">
+                <div class="col s12">
+                    <input name="dateAdded" id="dateAdded" type="date" class="datepicker matfix" required>
+                </div>
+            </div> -->
+            <div class="row">
+                <div class="input-field col s12">
+                    <input name="name" id="name" type="text" class="validate" data-length="35" value="{{recipe.name}}" required>
+                    <label for="name">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">image</i>
+                    <input name="imageURL" id="imageURL" type="text" class="validate" value="{{recipe.imageURL}}" required>
+                    <label for="imageURL">Image URL</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">add_circle_outline</i>
+                    <textarea name="ingredients" id="ingredients" class="materialize-textarea" value="{{recipe.ingredients}}" required></textarea>
+                    <label for="ingredients">Ingredients</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">access_time</i>
+                    <input name="duration" id="duration" type="number" class="validate" min="5" max="120" step="5" value="{{recipe.duration}}">
+                    <label for="duration">Time to cook (10-120m)</label>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">people</i>
+                    <input name="portions" id="portions" type="number" class="validate" min="2" max="12" step="2" value="{{recipe.portions}}">
+                    <label for="portions">Portions (2-12)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea name="instructions" id="instructions" class="materialize-textarea" value="{{recipe.instructions}}" required></textarea>
+                    <label for="instructions">Instructions</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="switch col s6">
+                    <label>
+                        <input id="isVetarian" name="isVegetarian" type="checkbox" value="{{recipe.isVegetarian}}">
+                        <span class="lever"></span>
+                        Is Vegetarian
+                    </label>
+                </div>
+                <div class="switch col s6">
+                    <label>
+                        <input id="isVegan" name="isVegan" type="checkbox" value="{{recipe.isVegan}}">
+                        <span class="lever"></span>
+                        Is Vegan
+                    </label>
+                </div>
+                <!-- <span class="helper-text" data-error="wrong" data-success="right">If your recipe provides both 'Vegetarian' and 'Vegan' instructions, please mark both checkboxes.</span> -->
+            </div>
+            <div class="row">
+                <button class="btn waves-effect waves-light" type="submit" name="action">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
+

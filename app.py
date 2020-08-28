@@ -35,7 +35,21 @@ mongo = PyMongo(app)
 
 
 #############################################
-#    AUTHENTICATION
+#    HOME
+#############################################
+
+@app.route('/')
+@app.route('/home')
+def get_recipe():
+    if 'username' in session:
+        return render_template("home.html", recipes=mongo.db.recipes.find(),
+        message='Welcome, you are logged in as ' + session['username'])
+
+    return render_template("home.html", recipes=mongo.db.recipes.find())
+
+
+#############################################
+#    USER
 #############################################
 
 #   REFERENCE CREDITS:
@@ -96,7 +110,6 @@ def sign_out():
 
 #   REGISTER A NEW USER
 
-
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == "POST":
@@ -143,8 +156,9 @@ def profile():
         print("You need to login to access your profile page.")
         return redirect(url_for("login"))
 
+
 #############################################
-#    INTERACT WITH DATABASE
+#    RECIPE INTERACTIONS
 #############################################
 
 #   INSERT USER INPUT
@@ -185,18 +199,36 @@ def insert_recipe():
     return redirect(url_for('get_recipe'))
 
 
-###########################################
-#    GENERAL/DISPLAY PAGES
-###########################################
+@app.route('/edit_recipe/<recipe_id>')
+def edit_recipe(recipe_id):
+    recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    return render_template('recipe/editrecipe.html', recipe=recipe)
 
-@app.route('/')
-@app.route('/home')
-def get_recipe():
-    if 'username' in session:
-        return render_template("home.html", recipes=mongo.db.recipes.find(),
-        message='Welcome, you are logged in as ' + session['username'])
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
 
-    return render_template("home.html", recipes=mongo.db.recipes.find())
+    #  if a recipe can be made in 30m or less
+    if int(request.form.get('duration')) <= 30:
+        isUnder30 = True
+    else:
+        isUnder30 = False
+
+    recipes = mongo.db.recipes
+    recipes.update({'_id': ObjectId(task_id)},
+    {
+        "date": datetime.datetime.now(),  # returns the date for today
+        "name": request.form.get('name'),
+        "imageURL": request.form.get('imageURL'),
+        "ingredients": str(request.form.get('ingredients')).split(sep=", "),
+        "instructions": str(request.form.get('instructions')).split(sep=", "),
+        "duration": int(request.form.get('duration')),
+        "portions": int(request.form.get('portions')),
+        "isVegan": bool(request.form.get('isVegan')),
+        "isVegetarian": bool(request.form.get('isVegetarian')),
+        "isUnder30": bool(isUnder30),
+        "username": session["username"],
+    })
+    return redirect(url_for('get_recipe'))
 
 @app.route('/recipe/<recipe_id>')
 def show_recipe(recipe_id):
@@ -208,7 +240,11 @@ def show_recipe(recipe_id):
     recipes=mongo.db.recipes.find(),
     recipe=recipe)
 
-#   BY CATEGORY
+
+###########################################
+#    CATEGORIES
+###########################################
+
 @app.route('/vegetarian')
 def get_vege():
     return render_template("category/vegetarian.html", recipes=mongo.db.recipes.find())
@@ -223,6 +259,7 @@ def get_vegan():
 def get_express():
     return render_template("category/express.html", recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
+
 
 ###########################################
 #    ERROR HANDLING

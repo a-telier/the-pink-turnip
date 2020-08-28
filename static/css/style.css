@@ -111,7 +111,7 @@ ul > li{
 
 /*--------------------------------------------footer*/
 .a-telier {
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'Homemade Apple', cursive;
     color: black;
 
@@ -128,5 +128,14 @@ ul > li{
     #landing-image{
         height: 140vw;
         background-image: url("../img/pink-background-vertical.png");
+    }
+}
+/*mobile screens only - under 320px width*/
+@media screen and (max-width: 375px){
+    h1{
+        font-size: 2.5em;
+    }
+    #landing-image{
+        height: 150vw;
     }
 }

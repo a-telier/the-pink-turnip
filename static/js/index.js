@@ -1,24 +1,9 @@
 //  NAV BAR
-//  document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('.sidenav');
-//     var instances = M.Sidenav.init(elems, options);
-//   });
-
-  // Or with jQuery
-
-  $(document).ready(function(){
+$(document).ready(function() {
     $('.sidenav').sidenav();
+    $('.dropdown-trigger').dropdown({ hover: false });
+    $('select').formSelect();
   });
-
-//  FORM
-//  SELECTOR
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems, options);
-    });
-    // $(document).ready(function(){
-    //     $('select').formSelect();
-    // });
 
 //  AUTORESIZING
 //  ingredients

@@ -24,12 +24,13 @@
             {% for recipe in recipes %}
                 {% if recipe.username == session.username %}
                     <div class="row">
-                        <div class="col s12 m6 l6">
+                        <div class="col s12 m4 l4">
                             <div class="card">
                                 <span class="teaser-overlay responsive-img"></span>
                                 <div class="card-image">
                                     <img class="teaser-image" src="{{ recipe.imageURL }}">
                                     <span class="card-title">{{recipe.name}}</span>
+                                    <a href="/edit_recipe/{{recipe._id}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
                                 </div>
                                 <!--indicator vegan or vegetarian-->
                                 <div class="card-content"> 

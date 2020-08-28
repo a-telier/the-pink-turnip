@@ -12,7 +12,7 @@
         <p>Help other users find a vegetarian or vegan recipe.</p>
     </div>
     <div class="row">
-        <form action="{{ url_for('insert_recipe') }}" method="POST"  class="col s12">
+        <form action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" method="POST" class="col s12">
             <!-- default date to 'today' in app.py instead of letting user select own date 
                 <div class="row">
                 <div class="col s12">
@@ -76,7 +76,7 @@
                 <!-- <span class="helper-text" data-error="wrong" data-success="right">If your recipe provides both 'Vegetarian' and 'Vegan' instructions, please mark both checkboxes.</span> -->
             </div>
             <div class="row">
-                <button class="btn waves-effect waves-light" type="submit" name="action">SUBMIT</button>
+                <button class="btn waves-effect waves-light" type="submit" name="action">EDIT RECIPE</button>
             </div>
         </form>
     </div>

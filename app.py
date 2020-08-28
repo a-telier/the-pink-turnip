@@ -166,7 +166,8 @@ def profile():
 def add_recipe():
     if "username" in session:
         print("User is logged in, display the profile page of user.")
-        return render_template("recipe/addrecipe.html", recipes=mongo.db.recipes.find())
+        return render_template("recipe/addrecipe.html",
+        recipes=mongo.db.recipes.find())
     else:
         print("You need to login to access your profile page.")
         return redirect(url_for("login"))
@@ -201,8 +202,13 @@ def insert_recipe():
 
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
-    recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
-    return render_template('recipe/editrecipe.html', recipe=recipe)
+    if "username" in session:
+        print("User is logged in, and can edit his/her recipes.")
+        recipe =  mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        return render_template('recipe/editrecipe.html', recipe=recipe)
+    else:
+        print("You need to login to access your profile page.")
+        return redirect(url_for("login"))
 
 @app.route('/update_recipe/<recipe_id>', methods=["POST"])
 def update_recipe(recipe_id):
@@ -214,7 +220,7 @@ def update_recipe(recipe_id):
         isUnder30 = False
 
     recipes = mongo.db.recipes
-    recipes.update({'_id': ObjectId(task_id)},
+    recipes.update( {'_id': ObjectId(recipe_id)},
     {
         "date": datetime.datetime.now(),  # returns the date for today
         "name": request.form.get('name'),
@@ -247,17 +253,20 @@ def show_recipe(recipe_id):
 
 @app.route('/vegetarian')
 def get_vege():
-    return render_template("category/vegetarian.html", recipes=mongo.db.recipes.find())
+    return render_template("category/vegetarian.html",
+    recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
 @app.route('/vegan')
 def get_vegan():
-    return render_template("category/vegan.html", recipes=mongo.db.recipes.find())
+    return render_template("category/vegan.html",
+    recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
 @app.route('/express')
 def get_express():
-    return render_template("category/express.html", recipes=mongo.db.recipes.find())
+    return render_template("category/express.html",
+    recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
 

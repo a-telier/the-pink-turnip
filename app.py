@@ -152,7 +152,7 @@ def profile():
 def add_recipe():
     if "username" in session:
         print("User is logged in, display the profile page of user.")
-        return render_template("addrecipe.html", recipes=mongo.db.recipes.find())
+        return render_template("recipe/addrecipe.html", recipes=mongo.db.recipes.find())
     else:
         print("You need to login to access your profile page.")
         return redirect(url_for("login"))
@@ -204,24 +204,24 @@ def show_recipe(recipe_id):
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     # displays each individual recipe's information
     # fetches the data based on the _id
-    return render_template("recipe.html",
+    return render_template("recipe/recipe.html",
     recipes=mongo.db.recipes.find(),
     recipe=recipe)
 
 #   BY CATEGORY
 @app.route('/vegetarian')
 def get_vege():
-    return render_template("vegetarian.html", recipes=mongo.db.recipes.find())
+    return render_template("category/vegetarian.html", recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
 @app.route('/vegan')
 def get_vegan():
-    return render_template("vegan.html", recipes=mongo.db.recipes.find())
+    return render_template("category/vegan.html", recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
 @app.route('/express')
 def get_express():
-    return render_template("express.html", recipes=mongo.db.recipes.find())
+    return render_template("category/express.html", recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
 ###########################################

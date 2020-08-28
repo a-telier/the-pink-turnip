@@ -47,6 +47,13 @@ def get_recipe():
 
     return render_template("home.html", recipes=mongo.db.recipes.find())
 
+@app.route('/about')
+def about():
+    return render_template("about.html")
+
+@app.route('/brands')
+def brands():
+    return render_template("brands.html", brands=mongo.db.brands.find())
 
 #############################################
 #    USER

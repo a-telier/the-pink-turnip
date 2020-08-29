@@ -43,12 +43,14 @@ mongo = PyMongo(app)
 @app.route('/home')
 def get_recipe():
     if 'username' in session:
-        return render_template("home.html", recipes=mongo.db.recipes.find(),
+        return render_template("home.html",
+        recipes=mongo.db.recipes.find(),
+        categories=mongo.db.categories.find(),
         message='Welcome, you are logged in as ' + session['username'])
-
-    return render_template("home.html",
-    recipes=mongo.db.recipes.find(),
-    categories=mongo.db.categories.find())
+    else:
+        return render_template("home.html",
+        recipes=mongo.db.recipes.find(),
+        categories=mongo.db.categories.find())
 
 #   ABOUT
 @app.route('/about')
@@ -203,8 +205,7 @@ def insert_recipe():
         "instructions": str(request.form.get('instructions')).split(sep=", "),
         "duration": int(request.form.get('duration')),
         "portions": int(request.form.get('portions')),
-        "isVegan": bool(request.form.get('isVegan')),
-        "isVegetarian": bool(request.form.get('isVegetarian')),
+        "categories": str(request.form.get('category')),
         "isUnder30": bool(isUnder30),
         "username": session["username"],
     }
@@ -244,8 +245,7 @@ def update_recipe(recipe_id):
         "instructions": str(request.form.get('instructions')).split(sep=", "),
         "duration": int(request.form.get('duration')),
         "portions": int(request.form.get('portions')),
-        "isVegan": bool(request.form.get('isVegan')),
-        "isVegetarian": bool(request.form.get('isVegetarian')),
+        "categories": str(request.form.get('category')),
         "isUnder30": bool(isUnder30),
         "username": session["username"],
     })
@@ -273,27 +273,26 @@ def show_recipe(recipe_id):
 #    CATEGORIES
 ###########################################
 
-@app.route('/vegetarian')
-def get_vege():
-    return render_template("category/vegetarian.html",
-    recipes=mongo.db.recipes.find())
-    return redirect(url_for('show_recipe'))
-
-@app.route('/vegan')
-def get_vegan():
-    return render_template("category/vegan.html",
-    recipes=mongo.db.recipes.find())
-    return redirect(url_for('show_recipe'))
-
 @app.route('/express')
 def get_express():
     return render_template("category/express.html",
     recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
+@app.route('/category/<category_name>')
+def category(category_name):
+    return render_template("category/category.html",
+    categories=mongo.db.categories.find(),
+    recipes=mongo.db.recipes.find())
+
+    return redirect(url_for('show_recipe'))
+
 @app.route('/allrecipes')
 def all_recipes():
-    return render_template("category/allrecipes.html", recipes=mongo.db.recipes.find())
+    return render_template("category/allrecipes.html",
+    recipes=mongo.db.recipes.find(),
+    categories=mongo.db.categories.find())
+
 
 ###########################################
 #    ERROR HANDLING

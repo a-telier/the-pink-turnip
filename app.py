@@ -199,6 +199,7 @@ def insert_recipe():
 
     recipeDict = {
         "date": datetime.datetime.now(),  # returns the date for today
+        "email": str(request.form.get('email')),
         "name": request.form.get('name'),
         "imageURL": request.form.get('imageURL'),
         "ingredients": str(request.form.get('ingredients')).split(sep=", "),
@@ -239,6 +240,7 @@ def update_recipe(recipe_id):
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
         "date": datetime.datetime.now(),  # returns the date for today
+        "email": str(request.form.get('email')),
         "name": request.form.get('name'),
         "imageURL": request.form.get('imageURL'),
         "ingredients": str(request.form.get('ingredients')).split(sep=", "),
@@ -283,15 +285,14 @@ def get_express():
 def category(category_name):
     return render_template("category/category.html",
     categories=mongo.db.categories.find(),
-    recipes=mongo.db.recipes.find())
-
+    recipes=mongo.db.recipes.find({'category': category_name}))
     return redirect(url_for('show_recipe'))
 
 @app.route('/allrecipes')
 def all_recipes():
     return render_template("category/allrecipes.html",
     recipes=mongo.db.recipes.find(),
-    categories=mongo.db.categories.find())
+    categories=mongo.db.categories.find_one())
 
 
 ###########################################

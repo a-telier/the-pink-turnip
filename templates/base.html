@@ -47,7 +47,7 @@
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="{{ url_for('all_recipes')}}"> All Recipes</a></li>
         {% for category in categories %}
-        <li><a href="/category/{{category.name}}"> {{category.name}}</a></li>
+        <li><a href="{{url_for('category', category_name=category.name)}}"> {{category.name}}</a></li>
         {% endfor %}
         <li><a href="{{ url_for('get_express')}}"> Express (30m or less!)</a></li>
     </ul>
@@ -74,7 +74,7 @@
             <li><a href="../home">Home</a></li>
             <li><a href="{{ url_for('about')}}"> About</a></li>
             {% for category in categories %}
-            <li><a href="/category/{{category.name}}" {{category.icon}}> {{category.name}}</a></li>
+            <li><a href="{{url_for('category', category_name=category.name)}}"> {{category.name}}</a></li>
             {% endfor %}
             <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock"></i> Express</a></li>
             <li><a href="{{ url_for('brands')}}"><i class="fa fa-heart"></i> Brands </a></li>

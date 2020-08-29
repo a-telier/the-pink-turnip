@@ -284,7 +284,7 @@ def get_express():
 @app.route('/category/<category_name>')
 def category(category_name):
     return render_template("category/category.html",
-    categories=mongo.db.categories.find(),
+    category=mongo.db.categories.find_one(),
     recipes=mongo.db.recipes.find({'category': category_name}))
     return redirect(url_for('show_recipe'))
 

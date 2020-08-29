@@ -10,15 +10,16 @@
 <section class="container">
     <!-- Here goes the user information  -->
     <div>
-        <h3>Welcome {{session.username}} ! </h3>
+        <h3>Welcome, {{session.username}} ! </h3>
         <p>Our mission as The Pink Turnip is to inspire people like you and me, who probably have not been exposed to vegetarian dishes before, to start a more veggie-friendly lifestyle! For that reason, we rely heavily on our community (you!) to share your awesome recipes with others.</p>
         <p>We look forward to see what is... 'cooking' in your kitchen!</p>
+        <a href="{{url_for('add_recipe')}}" class="waves-effect waves-light btn-small"><i class="material-icons right">add</i>Add a recipe!</a>
     </div>
 
     <!-- Here go all the recipes that the username has created -->
     <div>
         <div class="row">
-            <h3>Your shared recipes <i class="fas fa-utensil-spoon"></i></h3>
+            <h4>Your shared recipes <i class="fas fa-utensil-spoon"></i></h4>
         </div>
         <div>
             {% for recipe in recipes %}
@@ -30,7 +31,7 @@
                                 <div class="card-image">
                                     <img class="teaser-image" src="{{ recipe.imageURL }}">
                                     <span class="card-title">{{recipe.name}}</span>
-                                    <a href="/edit_recipe/{{recipe._id}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                                    <a href="/edit_recipe/{{recipe._id}}" class="btn-floating halfway-fab waves-effect waves-light green"><i class="material-icons">create</i></a>
                                 </div>
                                 <!--indicator vegan or vegetarian-->
                                 <div class="card-content"> 
@@ -62,6 +63,7 @@
                                 <div class="card-action">
                                     <a href="/recipe/{{recipe._id}}">MAKE THIS RECIPE! <i class="fas fa-utensils"></i></a>
                                 </div>
+                                <a href="/delete_recipe/{{recipe._id}}" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">delete</i></a>
                             </div>
                         </div>
                     </div>

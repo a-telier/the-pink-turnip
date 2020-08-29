@@ -13,17 +13,23 @@
     </div>
     <div class="row">
         <form action="{{ url_for('insert_recipe') }}" method="POST"  class="col s12">
-            <!-- default date to 'today' in app.py instead of letting user select own date 
-                <div class="row">
-                <div class="col s12">
-                    <input name="dateAdded" id="dateAdded" type="date" class="datepicker matfix" required>
-                </div>
-            </div> -->
             <div class="row">
                 <div class="input-field col s12">
                     <input name="name" id="name" type="text" class="validate" data-length="35" required>
                     <label for="name">Name</label>
                 </div>
+            </div>
+            <div class="input-field col s12">
+                <select>
+                    <option value="" disabled selected>Select a category</option>
+                    {% for category in categories %}
+                        <option href="{{ url_for('category')}}" value="category.name"><i class="fa fa-envira"></i> Vegetarian</option>
+                    {% endif %}
+                    <option href="{{ url_for('get_vege')}}" value="Vegetarian"><i class="fa fa-envira"></i> Vegetarian</option>
+                    <option href="{{ url_for('get_vegan')}}" value="Vegan"><i class="fas fa-leaf"></i> Vegan</option>
+                    <option href="{{ url_for('get_express')}}" value="Express"><i class="far fa-clock"></i> Express (30m or less!)</option>
+                </select>
+                <label>Categories</label>
             </div>
             <div class="row">
                 <div class="input-field col s12">
@@ -57,23 +63,6 @@
                     <textarea name="instructions" id="instructions" class="materialize-textarea" required></textarea>
                     <label for="instructions">Instructions</label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="switch col s6">
-                    <label>
-                        <input id="isVetarian" name="isVegetarian" type="checkbox">
-                        <span class="lever"></span>
-                        Is Vegetarian
-                    </label>
-                </div>
-                <div class="switch col s6">
-                    <label>
-                        <input id="isVegan" name="isVegan" type="checkbox">
-                        <span class="lever"></span>
-                        Is Vegan
-                    </label>
-                </div>
-                <!-- <span class="helper-text" data-error="wrong" data-success="right">If your recipe provides both 'Vegetarian' and 'Vegan' instructions, please mark both checkboxes.</span> -->
             </div>
             <div class="row">
                 <button class="btn waves-effect waves-light" type="submit" name="action">SUBMIT</button>

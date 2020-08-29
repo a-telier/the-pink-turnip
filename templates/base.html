@@ -53,10 +53,10 @@
     </a>
         <ul class="right hide-on-med-and-down">   
             <li><a href="{{ url_for('about')}}"> About</a></li>
-            <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i> Profile</a></li>
             <!-- Dropdown Trigger -->
-            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"> Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="fa fa-envira"></i> Categories<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a href="{{ url_for('brands')}}"><i class="fa fa-heart"></i> Brands we love! </a></li>
+            <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i> Profile</a></li>
             <!-- User Authentication -->
             {% if 'username' not in session %}
             <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
@@ -71,11 +71,11 @@
         <div class="container">
             <li><a href="../home">Home</a></li>
             <li><a href="{{ url_for('about')}}"> About</a></li>
-            <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i> Profile</a></li>
             <li><a href="{{ url_for('get_vege')}}"><i class="fa fa-envira"></i> Vegetarian</a></li>
             <li><a href="{{ url_for('get_vegan')}}"><i class="fas fa-leaf"></i> Vegan</a></li>
             <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock"></i> Express (30m or less!)</a></li>
             <li><a href="{{ url_for('brands')}}"><i class="fa fa-heart"></i> Brands we love! </a></li>
+            <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i> Profile</a></li>
             {% if 'username' not in session %}
             <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             {% else %}

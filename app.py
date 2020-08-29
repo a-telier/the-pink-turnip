@@ -35,9 +35,10 @@ mongo = PyMongo(app)
 
 
 #############################################
-#    HOME
+#    GENERAL PAGES
 #############################################
 
+#   HOME
 @app.route('/')
 @app.route('/home')
 def get_recipe():
@@ -45,18 +46,23 @@ def get_recipe():
         return render_template("home.html", recipes=mongo.db.recipes.find(),
         message='Welcome, you are logged in as ' + session['username'])
 
-    return render_template("home.html", recipes=mongo.db.recipes.find())
+    return render_template("home.html",
+    recipes=mongo.db.recipes.find(),
+    categories=mongo.db.categories.find())
 
+#   ABOUT
 @app.route('/about')
 def about():
     return render_template("about.html")
 
+#   BRANDS WE LOVE
 @app.route('/brands')
 def brands():
     return render_template("brands.html", brands=mongo.db.brands.find())
 
+
 #############################################
-#    USER
+#    USER INTERACTIONS
 #############################################
 
 #   REFERENCE CREDITS:
@@ -67,7 +73,7 @@ def brands():
 #   Sessions in Flask ->
 #   https://www.youtube.com/watch?v=iIhAfX4iek0&t=432s
 
-#   SIGNIN TO YOUR ACCOUNT
+#   SIGN IN TO YOUR ACCOUNT
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == "GET":
@@ -109,6 +115,7 @@ def login():
     else:
         return render_template("users/login.html")
 
+#   LOG OUT OF YOUR ACCOUNT
 @app.route("/sign-out")
 def sign_out():
     session.pop("username", None)
@@ -116,7 +123,6 @@ def sign_out():
     return redirect(url_for("login"))
 
 #   REGISTER A NEW USER
-
 @app.route('/register', methods=['POST', 'GET'])
 def register():
     if request.method == "POST":
@@ -145,7 +151,7 @@ def register():
         #   the method is GET, therefore do:
         return render_template("users/register.html")
 
-#   YOUR PROFILE
+#   DISPLAY YOUR PROFILE
 @app.route('/profile', methods=['GET'])
 def profile():
     if "username" in session:
@@ -168,13 +174,14 @@ def profile():
 #    RECIPE INTERACTIONS
 #############################################
 
-#   INSERT USER INPUT
+#   ADD A NEW RECIPE
 @app.route('/add_recipe')
 def add_recipe():
     if "username" in session:
         print("User is logged in, display the profile page of user.")
         return render_template("recipe/addrecipe.html",
-        recipes=mongo.db.recipes.find())
+        recipes=mongo.db.recipes.find(),
+        categories=mongo.db.categories.find())
     else:
         print("You need to login to access your profile page.")
         return redirect(url_for("login"))
@@ -207,6 +214,7 @@ def insert_recipe():
     return redirect(url_for('get_recipe'))
 
 
+#   EDIT AN EXISTING RECIPE
 @app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     if "username" in session:
@@ -243,6 +251,13 @@ def update_recipe(recipe_id):
     })
     return redirect(url_for('get_recipe'))
 
+#   DELETE RECIPES
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('profile'))
+
+#   SHOW RECIPES
 @app.route('/recipe/<recipe_id>')
 def show_recipe(recipe_id):
     # The web framework gets post_id from the URL and passes it as a string
@@ -276,6 +291,9 @@ def get_express():
     recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
+@app.route('/allrecipes')
+def all_recipes():
+    return render_template("category/allrecipes.html", recipes=mongo.db.recipes.find())
 
 ###########################################
 #    ERROR HANDLING

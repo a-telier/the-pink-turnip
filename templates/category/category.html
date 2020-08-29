@@ -7,10 +7,11 @@
 
 {% block body %}
     <section>
-    <div class="container">
-        <h3>{{category.name}}</h3>
-        {% for recipe in recipes %}
+        <div class="container">
+            <h3>{{category.name}} recipes</h3>
+            <p>{{category.description}}</p>
             <div class="row">
+                {% for recipe in recipes %}
                 <div class="col s12 m6 l6">
                     <div class="card">
                         <span class="teaser-overlay responsive-img"></span>
@@ -45,8 +46,8 @@
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-        {% endfor %}
         </div>
     </section>
 {% endblock %}

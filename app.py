@@ -285,6 +285,7 @@ def get_express():
 def category(category_name):
     return render_template("category/category.html",
     category=mongo.db.categories.find_one(),
+    categories=mongo.db.categories.find(),
     recipes=mongo.db.recipes.find({'category': category_name}))
     return redirect(url_for('show_recipe'))
 

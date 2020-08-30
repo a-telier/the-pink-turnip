@@ -59,10 +59,10 @@ hyperlink on each recipe card.
 - The user is also able to access a 'Brands we love' category where they can see information 
 about brands and possible sponsors that have meat or dairy replacement products.
 
-<div class="row">
-    <img class="l4 m6 s6" src="/static/img/documentation/categories/all-recipes-page.png">
-    <img class="l4 m6 s6" src="/static/img/documentation/categories/vegan-page.png">
-    <img class="l4 m6 s6" src="/static/img/documentation/categories/brands-page.png">
+<div style="display: inline block;">
+    <img width="300" height="300" src="/static/img/documentation/categories/all-recipes-page.png">
+    <img width="300" height="300" src="/static/img/documentation/categories/vegan-page.png">
+    <img width="300" height="300" src="/static/img/documentation/categories/brands-page.png">
 </div>
 
 #####   Single Recipe
@@ -70,8 +70,10 @@ about brands and possible sponsors that have meat or dairy replacement products.
 - Once in the single recipe, the user is able to browse through other recipes by simply 
 scrolling all the way down and clicking on another recipe.
 
-![Recipe - Single Page](/static/img/documentation/recipes/single-page.png)
-![Recipe - Single Page Browse](/static/img/documentation/recipes/single-page-others.png)
+<div style="display: inline block;">
+    <img width="300" height="300" src="/static/img/documentation/categories/single-page.png">
+    <img width="300" height="300" src="/static/img/documentation/categories/single-page-others.png">
+</div>
 
 #####   Profile Interactions
 - The user is able to login by creating an account which requires a username and password.
@@ -88,10 +90,11 @@ corner of each recipe.
 on the red button next to the edit button.
 - The user is able to add a new recipe by clicking on the 'Add Recipe' button in their profile page.
 
-![Profile - Page](/static/img/documentation/profile/profile-page.png)
-![Profile - Add Recipe Page](/static/img/documentation/profile/add-recipe-page.png)
-![Profile - Edit Recipe Page](/static/img/documentation/profile/edit-recipe-page.png)
-
+<div style="display: inline block;">
+    <img width="300" height="300" src="/static/img/documentation/categories/profile-page.png">
+    <img width="300" height="300" src="/static/img/documentation/categories/add-recipe-page.png">
+    <img width="300" height="300" src="/static/img/documentation/categories/edit-recipe-page.png">
+</div>
 
 Features
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.

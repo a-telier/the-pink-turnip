@@ -59,12 +59,11 @@ hyperlink on each recipe card.
 - The user is also able to access a 'Brands we love' category where they can see information 
 about brands and possible sponsors that have meat or dairy replacement products.
 
-<img width="300" height="300" src="../img/documentation/categories/all-recipes-page.png">
-<img width="300" height="300" src="../img/documentation/categories/vegan-page.png">
-
-![Category - All Recipes Page](/static/img/documentation/categories/all-recipes-page.png)
-![Category - Vegan Page](/static/img/documentation/categories/vegan-page.png)
-![Category - Brands Page](https://github.com/a-telier/blog/static/img/documentation/categories/brands-page.png)
+<div class="row">
+    <img class="l4 m6 s6" src="/static/img/documentation/categories/all-recipes-page.png">
+    <img class="l4 m6 s6" src="/static/img/documentation/categories/vegan-page.png">
+    <img class="l4 m6 s6" src="/static/img/documentation/categories/brands-page.png">
+</div>
 
 #####   Single Recipe
 - The user is able to visualize duration, portions, ingredients and instructions for each recipe.

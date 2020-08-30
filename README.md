@@ -44,8 +44,8 @@ category tag.
 how many people it will feed.
 
 
-![Home Page](/static/img/documentation/home-page.png)
-![alt text](https://github.com/a-telier/blog/static/img/documentation/home-browse-page.png)
+![Home - Landing Page](/static/img/documentation/home-page.png)
+![Home - Home Page Browse](/static/img/documentation/home-browse-page.png)
 
 #####   Category
 - The user is able to access individual categories through the navigation menu:
@@ -59,18 +59,17 @@ hyperlink on each recipe card.
 - The user is also able to access a 'Brands we love' category where they can see information 
 about brands and possible sponsors that have meat or dairy replacement products.
 
-![alt text](https://github.com/a-telier/blog/static/img/documentation/categories/all-recipes-page.png)
-![alt text](https://github.com/a-telier/blog/static/img/documentation/categories/vegan-page.png)
-![alt text](https://github.com/a-telier/blog/static/img/documentation/categories/brand-page.png)
+![Category - All Recipes Page](/static/img/documentation/categories/all-recipes-page.png)
+![Category - Vegan Page](/static/img/documentation/categories/vegan-page.png)
+![Category - Brands Page](https://github.com/a-telier/blog/static/img/documentation/categories/brand-page.png)
 
 #####   Single Recipe
 - The user is able to visualize duration, portions, ingredients and instructions for each recipe.
 - Once in the single recipe, the user is able to browse through other recipes by simply 
 scrolling all the way down and clicking on another recipe.
 
-![alt text](https://github.com/a-telier/blog/static/img/documentation/recipes/single-page.png)
-![alt text](https://github.com/a-telier/blog/static/img/documentation/recipes/single-page-others.png)
-
+![Recipe - Single Page](/static/img/documentation/recipes/single-page.png)
+![Recipe - Single Page Browse](/static/img/documentation/recipes/single-page-others.png)
 
 #####   Profile Interactions
 - The user is able to login by creating an account which requires a username and password.
@@ -87,9 +86,9 @@ corner of each recipe.
 on the red button next to the edit button.
 - The user is able to add a new recipe by clicking on the 'Add Recipe' button in their profile page.
 
-![alt text](https://github.com/a-telier/blog/static/img/documentation/profile/profile-page.png)
-![alt text](https://github.com/a-telier/blog/static/img/documentation/profile/add-recipe-page.png)
-![alt text](https://github.com/a-telier/blog/static/img/documentation/profile/edit-recipe-page.png)
+![Profile - Page](/static/img/documentation/profile/profile-page.png)
+![Profile - Add Recipe Page](/static/img/documentation/profile/add-recipe-page.png)
+![Profile - Edit Recipe Page](/static/img/documentation/profile/edit-recipe-page.png)
 
 
 Features

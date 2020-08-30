@@ -44,7 +44,7 @@ category tag.
 how many people it will feed.
 
 
-![alt text](../img/documentation/home-page.png)
+![Home Page](/static/img/documentation/home-page.png)
 ![alt text](https://github.com/a-telier/blog/static/img/documentation/home-browse-page.png)
 
 #####   Category

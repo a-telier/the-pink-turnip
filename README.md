@@ -43,9 +43,10 @@ category tag.
 - The user is able to visalize approximately how long the recipe will take to make and 
 how many people it will feed.
 
-
-![Home - Landing Page](/static/img/documentation/home-page.png)
-![Home - Home Page Browse](/static/img/documentation/home-browse-page.png)
+<div style="display: inline block;">
+    <img width="250" height="300" src="/static/img/documentation/categories/home-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/home-browse-page.png">
+</div>
 
 #####   Category
 - The user is able to access individual categories through the navigation menu:
@@ -60,9 +61,9 @@ hyperlink on each recipe card.
 about brands and possible sponsors that have meat or dairy replacement products.
 
 <div style="display: inline block;">
-    <img width="300" height="300" src="/static/img/documentation/categories/all-recipes-page.png">
-    <img width="300" height="300" src="/static/img/documentation/categories/vegan-page.png">
-    <img width="300" height="300" src="/static/img/documentation/categories/brands-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/all-recipes-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/vegan-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/brands-page.png">
 </div>
 
 #####   Single Recipe
@@ -71,8 +72,8 @@ about brands and possible sponsors that have meat or dairy replacement products.
 scrolling all the way down and clicking on another recipe.
 
 <div style="display: inline block;">
-    <img width="300" height="300" src="/static/img/documentation/categories/single-page.png">
-    <img width="300" height="300" src="/static/img/documentation/categories/single-page-others.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/single-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/single-page-others.png">
 </div>
 
 #####   Profile Interactions
@@ -91,9 +92,9 @@ on the red button next to the edit button.
 - The user is able to add a new recipe by clicking on the 'Add Recipe' button in their profile page.
 
 <div style="display: inline block;">
-    <img width="300" height="300" src="/static/img/documentation/categories/profile-page.png">
-    <img width="300" height="300" src="/static/img/documentation/categories/add-recipe-page.png">
-    <img width="300" height="300" src="/static/img/documentation/categories/edit-recipe-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/profile-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/add-recipe-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/edit-recipe-page.png">
 </div>
 
 Features

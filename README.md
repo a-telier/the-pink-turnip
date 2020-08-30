@@ -46,6 +46,7 @@ how many people it will feed.
 <div style="display: inline block;">
     <img width="250" height="300" src="/static/img/documentation/home-page.png">
     <img width="250" height="300" src="/static/img/documentation/home-browse-page.png">
+    <img width="250" height="300" src="/static/img/documentation/about-page.png">
 </div>
 
 #####   Category
@@ -97,6 +98,9 @@ on the red button next to the edit button.
     <img width="250" height="300" src="/static/img/documentation/profile/edit-recipe-page.png">
 </div>
 
+
+============
+
 Features
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.
 
@@ -109,8 +113,40 @@ In addition, you may also use this section to discuss plans for additional featu
 
 Features Left to Implement
 Another feature idea
-Technologies Used
-In this section, you should mention all of the languages, frameworks, libraries, and any other tools that you have used to construct this project. For each, provide its name, a link to its official site and a short sentence of why it was used.
+
+=============
+
+Languages
+
+- HTML: Used to create the backbone and structure of the site.
+- CSS: Used to customize the visual outcome of the site. As well as to ensure via @media queries that the content displays nicely in all devices.
+- Javascript: Used to define the game mechanics, navigation as well as the interactions with the different html and DOM elements.
+Libraries
+- JQuery: Used to be able to select elements in the HTML code based on their styling, and then modify them in Javascript.
+- Python:
+
+Other tools
+Templating
+- Jinja
+- Flask
+
+Styling
+- Materialize
+- Font Awesome
+- Canva Online Editor: Used to edit all of the graphic material used on this site.
+
+Production
+- Gitpod: Used as the coding environment for this project.
+- Github: Used to store all repositories for this project, as well as to deploy the site via GitPages.
+
+Tracking
+- Google Analytics: Used to track users behavior and traffic to the site.
+
+Others
+- W3schools: Used to clarify and solidify knowledge acquired during the course.
+- Stack Overflow: Used as support when troubleshooting and fixing bugs.
+
+=============
 
 JQuery
 The project uses JQuery to simplify DOM manipulation.

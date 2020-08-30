@@ -34,23 +34,63 @@ my work.
 -   As a user, I want to be able to edit and remove the recipes I have created.
 
 ### How can the user achieve this?
-How does the site helps the user achieve it
+#####   Home page
+- The user is able to browse through recipes by scrolling down the home page.
+- If the user is logged in, a welcome message will be displayed.
+- The user is able to navigate through the site by using the navigation menu.
+- The user is able to easily see which category the recipes belong to as indicated by the 
+category tag.
+- The user is able to visalize approximately how long the recipe will take to make and 
+how many people it will feed.
 
-####    Pages
-#####   Home
+
 ![alt text](https://github.com/a-telier/blog/static/img/documentation/home-page.png)
 ![alt text](https://github.com/a-telier/blog/static/img/documentation/home-browse-page.png)
 
 #####   Category
+- The user is able to access individual categories through the navigation menu:
+    - The user is able to choose between vegan or vegetarian recipes.
+    - The user is able to access an additional category which is a filter selection for recipes 
+    which duration is under 30 minutes.
+    - The user is also able to access a page which collects all recipes.
+    - The user is also able to log in to their profile.
+- The user is able to visualize each individual recipe by clicking on the action 
+hyperlink on each recipe card.
+- The user is also able to access a 'Brands we love' category where they can see information 
+about brands and possible sponsors that have meat or dairy replacement products.
 
-#####   Recipe
+![alt text](https://github.com/a-telier/blog/static/img/documentation/categories/all-recipes-page.png)
+![alt text](https://github.com/a-telier/blog/static/img/documentation/categories/vegan-page.png)
+![alt text](https://github.com/a-telier/blog/static/img/documentation/categories/brand-page.png)
 
-#####   Profile
+#####   Single Recipe
+- The user is able to visualize duration, portions, ingredients and instructions for each recipe.
+- Once in the single recipe, the user is able to browse through other recipes by simply 
+scrolling all the way down and clicking on another recipe.
 
-Provide a list of User Stories, with the following general structure:
+![alt text](https://github.com/a-telier/blog/static/img/documentation/recipes/single-page.png)
+![alt text](https://github.com/a-telier/blog/static/img/documentation/recipes/single-page-others.png)
 
-As a user type, I want to perform an action, so that I can achieve a goal.
-This section is also where you would share links to any wireframes, mockups, diagrams etc. that you created as part of the design process. These files should themselves either be included as a pdf file in the project itself (in an separate directory), or just hosted elsewhere online and can be in any format that is viewable inside the browser.
+
+#####   Profile Interactions
+- The user is able to login by creating an account which requires a username and password.
+- If the user is not logged in, the button displayed in navigator will say 'Login', if the 
+user has already logged in the button will display 'Sign out'.
+- The user is able to sign out of their account, which removes the cookie session by clicking on 
+the Sign Out button.
+- If the user is already logged in, the user will be redirected to his or her profile.
+- Once the user has logged in, (s)he) is able to see the recipes (s)he has added to The Pink 
+Turnip's library.
+- The user is able to edit those recipes by clicking on the green edit button on the top left 
+corner of each recipe.
+- The user is also able to delete a recipe (s)he has created by simply clicking 
+on the red button next to the edit button.
+- The user is able to add a new recipe by clicking on the 'Add Recipe' button in their profile page.
+
+![alt text](https://github.com/a-telier/blog/static/img/documentation/profile/profile-page.png)
+![alt text](https://github.com/a-telier/blog/static/img/documentation/profile/add-recipe-page.png)
+![alt text](https://github.com/a-telier/blog/static/img/documentation/profile/edit-recipe-page.png)
+
 
 Features
 In this section, you should go over the different parts of your project, and describe each in a sentence or so.

@@ -112,6 +112,17 @@ ul > li{
 }
 
 /*--------------------------------------------footer*/
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
+
+/*--------------------------------------------signature*/
 .a-telier {
     font-size: 1.5em;
     font-family: 'Homemade Apple', cursive;
@@ -120,7 +131,7 @@ ul > li{
     z-index: 8;
 }
 
-/* MEDIA QUERIES */
+/*-------- MEDIA QUERIES --------*/
 
 /*ipad screens only - under 770px width*/
 @media screen and (max-width: 768px){
@@ -141,7 +152,7 @@ ul > li{
         height: 150vw;
     }
 }
-
+/*mobile screens only iphone 5SE - under 320px width*/
 @media screen and (max-width: 280px){
     #landing-image{
         height: 180vw;

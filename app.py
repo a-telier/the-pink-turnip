@@ -60,7 +60,10 @@ def about():
 #   BRANDS WE LOVE
 @app.route('/brands')
 def brands():
-    return render_template("brands.html", brands=mongo.db.brands.find())
+    return render_template("brands.html",
+    recipes=mongo.db.recipes.find(),
+        categories=mongo.db.categories.find(),
+        brands=mongo.db.brands.find())
 
 
 #############################################

@@ -24,14 +24,13 @@
                 <h4>Your shared recipes <i class="fas fa-utensil-spoon"></i></h4>
             </div>
             <div class="row">
-            {% for recipe in recipes %}
+                {% for recipe in recipes %}
                 {% if recipe.username == session.username %}
-                <div class="col s12 m4 l4">
+                <div class="col s12 m6 l4">
                     <div class="card">
                         <div>
                             <a href="/edit_recipe/{{recipe._id}}" class="btn-floating pulse waves-effect waves-light green"><i class="material-icons">create</i></a>
                             <a href="/delete_recipe/{{recipe._id}}" class="btn-floating waves-effect waves-light red"><i class="material-icons">delete</i></a>
-                            <span class="teaser-overlay responsive-img"></span>
                         </div>
                         <a href="{{url_for('show_recipe', recipe_id=recipe._id)}}">
                         <div class="card-image">
@@ -58,7 +57,7 @@
                             </ul>
                             <!--indicator duration and portions in text format-->
                             {% if recipe.duration != 0 and recipe.portion != 0 %}
-                                <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>
+                            <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>
                             {% endif %}
                         </div>
                     </div>
@@ -66,7 +65,7 @@
                 {% elif recipe.username is none %}
                     <p>"{{session.username}}, you have not created any recipes yet! Click on this link or use the above to start sharing your recipes."</p>
                 {% endif %}
-            {% endfor %}
+                {% endfor %}
             </div>
         </div>
     </div>

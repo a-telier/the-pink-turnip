@@ -62,8 +62,8 @@ def about():
 def brands():
     return render_template("brands.html",
     recipes=mongo.db.recipes.find(),
-        categories=mongo.db.categories.find(),
-        brands=mongo.db.brands.find())
+    categories=mongo.db.categories.find(),
+    brands=mongo.db.brands.find())
 
 
 #############################################
@@ -290,7 +290,7 @@ def get_express():
 def category(category_name):
     return render_template("category/category.html",
     # category=mongo.db.categories.find_one(),
-    category=mongo.db.categories.find_one({'name': category_name}),
+    the_category=mongo.db.categories.find_one({'name': category_name}),
     categories=mongo.db.categories.find(),
     recipes=mongo.db.recipes.find({'category': category_name}))
     return redirect(url_for('show_recipe'))
@@ -299,7 +299,7 @@ def category(category_name):
 def all_recipes():
     return render_template("category/allrecipes.html",
     recipes=mongo.db.recipes.find(),
-    categories=mongo.db.categories.find_one())
+    categories=mongo.db.categories.find())
 
 
 ###########################################

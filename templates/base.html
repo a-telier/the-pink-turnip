@@ -47,25 +47,25 @@
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="{{ url_for('all_recipes')}}"> All Recipes</a></li>
         {% for category in categories %}
-        <li><a href="{{url_for('category', category_name=category.name)}}"> {{category.name|capitalize}}</a></li>
+        <li><a href="{{url_for('category', category_name=category.name)}}"> {{category.name}}</a></li>
         {% endfor %}
         <li><a href="{{ url_for('get_express')}}"> Express (30m or less!)</a></li>
     </ul>
-
     </a>
-        <ul class="right hide-on-med-and-down">   
-            <li><a href="{{ url_for('about')}}"> About</a></li>
-            <!-- Dropdown Trigger -->
-            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="fa fa-envira"></i> Categories<i class="material-icons right">arrow_drop_down</i></a></li>
-            <li><a href="{{ url_for('brands')}}"><i class="fa fa-heart"></i> Brands we love! </a></li>
-            <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i> Profile</a></li>
-            <!-- User Authentication -->
-            {% if 'username' not in session %}
-            <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
-            {% else %}
-            <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
-            {% endif %}
-        </ul>
+    
+    <ul class="right hide-on-med-and-down">   
+        <li><a href="{{ url_for('about')}}"> About</a></li>
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="fa fa-envira"></i> Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+        <li><a href="{{ url_for('brands')}}"><i class="fa fa-heart"></i> Brands we love! </a></li>
+        <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i> Profile</a></li>
+        <!-- User Authentication -->
+        {% if 'username' not in session %}
+        <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        {% else %}
+        <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+        {% endif %}
+    </ul>
   </nav>
 
   <!--Mobile navigation menu-->
@@ -73,16 +73,16 @@
         <div class="container">
             <li><a href="../home">Home</a></li>
             <li><a href="{{ url_for('about')}}"> About</a></li>
-            <!-- Dropdown Trigger -->
-            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="fa fa-envira"></i> Categories<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a href="{{url_for('category', category_name='vegan')}}"><i class="fa fa-envira"></i> Vegan</a></li>
+            <li><a href="{{url_for('category', category_name='vegetarian')}}"><i class="fas fa-leaf"></i> Vegetarian</a></li>
             <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock"></i> Express</a></li>
             <li><a href="{{ url_for('brands')}}"><i class="fa fa-heart"></i> Brands </a></li>
-            <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i> Profile</a></li>
+            <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i><b> Profile</b></a></li>
             <!-- User Authentication -->
             {% if 'username' not in session %}
-            <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+            <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i><b> Login</b></a></li>
             {% else %}
-            <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i> Sign Out</a></li>
+            <li><a href="{{ url_for('sign_out')}}"><i class="fas fa-sign-out-alt"></i><b> Sign Out</b></a></li>
             {% endif %}
         </div>
         </ul>

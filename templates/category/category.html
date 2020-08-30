@@ -8,17 +8,18 @@
 {% block body %}
     <section>
         <div class="container">
-            <h3>{{category.name|capitalize}} recipes</h3>
-            <p>{{category.description}}</p>
+            <h3>{{the_category.name|capitalize}} recipes</h3>
+            <p>{{the_category.description}}</p>
             <div class="row">
                 {% for recipe in recipes %}
                 <div class="col s12 m6 l6">
                     <div class="card">
-                        <span class="teaser-overlay responsive-img"></span>
+                        <a href="{{url_for('show_recipe', recipe_id=recipe._id)}}">
                         <div class="card-image">
                             <img class="teaser-image" src="{{ recipe.imageURL }}">
                             <span class="card-title">{{recipe.name}}</span>
                         </div>
+                        </a>
                         <!--tag vegan, vegetarian or neither vegan nor vegatarian-->
                         <div class="card-content"> 
                             <ul class="tabs">

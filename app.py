@@ -168,6 +168,7 @@ def profile():
         user = mongo.db.recipes.find_one({"username": current_user["username"]})
 
         return render_template("users/profile.html",
+            categories=mongo.db.categories.find(),
             recipes=mongo.db.recipes.find())
 
     else:

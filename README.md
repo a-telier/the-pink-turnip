@@ -44,8 +44,8 @@ category tag.
 how many people it will feed.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/categories/home-page.png">
-    <img width="250" height="300" src="/static/img/documentation/categories/home-browse-page.png">
+    <img width="250" height="300" src="/static/img/documentation/home-page.png">
+    <img width="250" height="300" src="/static/img/documentation/home-browse-page.png">
 </div>
 
 #####   Category
@@ -72,8 +72,8 @@ about brands and possible sponsors that have meat or dairy replacement products.
 scrolling all the way down and clicking on another recipe.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/categories/single-page.png">
-    <img width="250" height="300" src="/static/img/documentation/categories/single-page-others.png">
+    <img width="250" height="300" src="/static/img/documentation/recipes/single-page.png">
+    <img width="250" height="300" src="/static/img/documentation/recipes/single-page-others.png">
 </div>
 
 #####   Profile Interactions
@@ -92,9 +92,9 @@ on the red button next to the edit button.
 - The user is able to add a new recipe by clicking on the 'Add Recipe' button in their profile page.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/categories/profile-page.png">
-    <img width="250" height="300" src="/static/img/documentation/categories/add-recipe-page.png">
-    <img width="250" height="300" src="/static/img/documentation/categories/edit-recipe-page.png">
+    <img width="250" height="300" src="/static/img/documentation/profile/profile-page.png">
+    <img width="250" height="300" src="/static/img/documentation/profile/add-recipe-page.png">
+    <img width="250" height="300" src="/static/img/documentation/profile/edit-recipe-page.png">
 </div>
 
 Features

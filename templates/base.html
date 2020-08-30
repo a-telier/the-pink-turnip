@@ -73,12 +73,12 @@
         <div class="container">
             <li><a href="../home">Home</a></li>
             <li><a href="{{ url_for('about')}}"> About</a></li>
-            {% for category in categories %}
-            <li><a href="{{url_for('category', category_name=category.name)}}"> {{category.name}}</a></li>
-            {% endfor %}
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1"><i class="fa fa-envira"></i> Categories<i class="material-icons right">arrow_drop_down</i></a></li>
             <li><a href="{{ url_for('get_express')}}"><i class="far fa-clock"></i> Express</a></li>
             <li><a href="{{ url_for('brands')}}"><i class="fa fa-heart"></i> Brands </a></li>
             <li><a href="{{ url_for('profile')}}"><i class="fas fa-user-circle"></i> Profile</a></li>
+            <!-- User Authentication -->
             {% if 'username' not in session %}
             <li><a href="{{ url_for('login')}}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
             {% else %}

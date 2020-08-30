@@ -281,13 +281,15 @@ def show_recipe(recipe_id):
 @app.route('/express')
 def get_express():
     return render_template("category/express.html",
+    categories=mongo.db.categories.find(),
     recipes=mongo.db.recipes.find())
     return redirect(url_for('show_recipe'))
 
 @app.route('/category/<category_name>')
 def category(category_name):
     return render_template("category/category.html",
-    category=mongo.db.categories.find_one(),
+    # category=mongo.db.categories.find_one(),
+    category=mongo.db.categories.find_one({'name': category_name}),
     categories=mongo.db.categories.find(),
     recipes=mongo.db.recipes.find({'category': category_name}))
     return redirect(url_for('show_recipe'))

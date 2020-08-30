@@ -11,16 +11,41 @@ but that are looking to start a more plant-based style.
 
 ### What does the user want to achieve in this site?
 #####   Passive User:
-- As a passive user, I want to find recipes, so that I can cook 
-
-![alt text](https://github.com/a-telier/blog/static/img/documentation/Screenshot 2020-08-30 at 18.41.58.png)
+*   This is a user that does not necessarily know the site and that is simply 
+looking for inspiration.
+-   As a user, I want to browse through recipes, so that I can find a recipe 
+I want to make.
+-   As a user, I want to be able to quickly identify if a recipe is vegan 
+or vegetarian, so that I can make a my choice quickly.
+-   As a user, I want to identify recipes that are quick to make, so that I 
+can make a my choice quickly.
+-   As a user, I want to be able to easily find the information I need in 
+the recipe - ingredients, time it takes to prepare, and instructions.
+-   As a user, I want to find brands and products that help me achieve a more 
+plant-based diet and sustainable lifestyle.
 
 #####   Active User:
-It's also a community - a place for users to share recipes to inspire others, 
-and discover brands that can help them achieve this goal.
+*   This is a user that knows the site and wants to be part of the community 
+and inspire others by sharing their own recipes.
+-   As a user, I want to share recipes with others, so that others can replicate 
+what I have made.
+-   As a user, I want to see my name on the recipes, so that I can showcase 
+my work.
+-   As a user, I want to be able to edit and remove the recipes I have created.
 
 ### How can the user achieve this?
 How does the site helps the user achieve it
+
+####    Pages
+#####   Home
+![alt text](https://github.com/a-telier/blog/static/img/documentation/home-page.png)
+![alt text](https://github.com/a-telier/blog/static/img/documentation/home-browse-page.png)
+
+#####   Category
+
+#####   Recipe
+
+#####   Profile
 
 Provide a list of User Stories, with the following general structure:
 

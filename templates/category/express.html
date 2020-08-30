@@ -21,29 +21,28 @@
                                 <span class="card-title">{{recipe.name}}</span>
                             </div>
                             <div class="card-content">
-                                <!--indicator vegan or vegetarian-->
+                            <!--tag vegan, vegetarian or neither vegan nor vegatarian-->
+                            <div class="card-content"> 
                                 <ul class="tabs">
-                                    {% if recipe.isVegetarian == True and recipe.isVegan == False %}
+                                    {% if recipe.category == "vegetarian" %}
                                     <li class="tab half teal-text teal lighten-5">
-                                            <p><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian </p>
+                                        <p><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian </p>
                                     </li>
-                                    {% elif recipe.isVegan == True and recipe.isVegetarian == False %}
-                                    <li class="tab half teal-text teal lighten-5">
-                                            <p><i class="fa fa-heart" aria-hidden="true"></i> Vegan </p>
-                                    </li>
-                                    {% elif recipe.isVegetarian == True and recipe.isVegan == True %}
-                                    <li class="tab half teal-text teal lighten-5">
-                                            <p><i class="fa fa-envira" aria-hidden="true"></i> Vegetarian </p>
-                                    </li>
-                                    <li class="tab half teal-text teal lighten-5">
-                                            <p><i class="fa fa-heart" aria-hidden="true"></i> Vegan </p>
+                                    {% elif recipe.category == "vegan" %}
+                                    <li class="tab half pink-text pink lighten-5">
+                                        <p><i class="fa fa-heart" aria-hidden="true"></i> Vegan </p>
                                     </li>
                                     {% else %}
                                     <li class="tab red-text red lighten-5">
-                                            <p><i class="fa fa-times" aria-hidden="true"></i> Not Vegetarian nor vegan </p>
+                                        <p><i class="fa fa-times" aria-hidden="true"></i> Not Vegetarian nor vegan </p>
                                     </li>
                                     {% endif%}
                                 </ul>
+                            <!--indicator duration and portions in text format-->
+                            {% if recipe.duration != 0 and recipe.portion != 0 %}
+                                <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>
+                            {% endif %}
+                        </div>
                                 <!--indicator duration and portions in text format-->
                                 {% if recipe.duration != 0 and recipe.portion != 0 %}
                                     <p class="text-centered">It takes <b>{{recipe.duration}} minutes </b> to make this recipe, and it <b> feeds {{recipe.portions}} people</b></p>

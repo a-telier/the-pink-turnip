@@ -5,16 +5,22 @@ start a more plant-based diet.
 It all starts one Monday at the time.
 
 ##  UX process
-### The user
-Who is this site for
+### Who is this site for?
 This site targets people that are not necessarily vegetarian or vegan, 
-but are looking for a start to a more plant-based style.
+but that are looking to start a more plant-based style.
+
+### What does the user want to achieve in this site?
+#####   Passive User:
+- As a passive user, I want to find recipes, so that I can cook 
+
+![alt text](https://github.com/a-telier/blog/static/img/documentation/Screenshot 2020-08-30 at 18.41.58.png)
+
+#####   Active User:
 It's also a community - a place for users to share recipes to inspire others, 
 and discover brands that can help them achieve this goal.
 
-What does the user want to achieve on this site
+### How can the user achieve this?
 How does the site helps the user achieve it
-
 
 Provide a list of User Stories, with the following general structure:
 

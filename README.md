@@ -208,33 +208,33 @@ is required.
 ##  Languages
 ### Programming languages:
 - HTML: Combined with Jinja, HTML is used to create the backbone and structure of the site.
-  [Learn more about HTML:](https://www.w3schools.com/html/default.asp)
+  [Learn more about HTML.](https://www.w3schools.com/html/default.asp)
 - CSS: Used to customize the visual outcome of the site, as well as to ensure via @media queries that the content displays nicely 
 in all devices.
-  [Learn more about CSS:](https://www.w3schools.com/css/default.asp)
+  [Learn more about CSS.](https://www.w3schools.com/css/default.asp)
 - Javascript: Combined with JQuery, Javascript is used to deploy triggers that the user interacts with for example the input form 
 and the navigation dropdown and side mobile menus.
-  [Learn more about Javascript:](https://www.w3schools.com/js/default.asp)
+  [Learn more about Javascript.](https://www.w3schools.com/js/default.asp)
 - Python: Used to communicate with the database, routing and displaying html templates and manipulating data via the user interface.
-  [Learn more about Python:](https://www.w3schools.com/python/default.asp)
+  [Learn more about Python.](https://www.w3schools.com/python/default.asp)
 
 ### Libraries:
 ###### Structural:
 - Flask: Used as a web framework, which combined with Jinja and Werkzeug are able to simplify the web development process and make a 
 consistent framework.
-  [Learn more about Flask:](https://flask.palletsprojects.com/en/1.1.x/)
+  [Learn more about Flask.](https://flask.palletsprojects.com/en/1.1.x/)
 - Jinja: Used as the templating engine to be able to create HTML pre-made layouts that can be then can be rendered via Python.
-  [Learn more about Jinja:](https://jinja.palletsprojects.com/en/2.11.x/)
+  [Learn more about Jinja.](https://jinja.palletsprojects.com/en/2.11.x/)
 - Werkzeug: Used as the WSGI toolkit that Flask needs to run.
-  [Learn more about Werkzeug:](https://palletsprojects.com/p/werkzeug/)
+  [Learn more about Werkzeug.](https://palletsprojects.com/p/werkzeug/)
 
 ###### Styling and Interactions:
 - JQuery: Used to be able to select elements in the HTML code based on their styling, and then modify them in Javascript. Often it 
 has been part of Materialize components for this project.
-  [Learn more about JQuery:](https://www.w3schools.com/jquery/jquery_intro.asp)
+  [Learn more about JQuery.](https://www.w3schools.com/jquery/jquery_intro.asp)
 - Materialize: Used to speed up the development process by taking ready to use components and styling classes from the Materialize 
 libarary for example cards which are used to display the recipes.
-  [Learn more about Materialize:](https://materializecss.com/navbar.html)
+  [Learn more about Materialize.](https://materializecss.com/navbar.html)
 
 ### Tools:
 ###### Production Environment:
@@ -353,28 +353,28 @@ This application is hosted in Heroku, which you would need an account for.
 ###### Media:
 - Unsplash: Used to get all the stock photo material. This is a library where amateur photographers around the world upload their 
 pictures and make them available to other users for free.
-  [Learn more about Canva:](https://unsplash.com/s/photos/vegetarian)
+  [Learn more about Canva.](https://unsplash.com/s/photos/vegetarian)
 - Canva Online Editor: Used to do any graphic design used on this site such as resizing pictures or creating the logo.
-  [Learn more about Canva:](https://www.canva.com/)
+  [Learn more about Canva.](https://www.canva.com/)
 - Font Awesome: Used to get icons making it a more intuitive experience for the user such as for example having a User icon leading 
 to the Profile page.
-  [Learn more about Font Awesome:](https://fontawesome.com/icons?d=gallery)
+  [Learn more about Font Awesome.](https://fontawesome.com/icons?d=gallery)
 
 ###### Login System:
 - Julian Nash's tutorials have been fundamental to closing some of the knowledge gaps that I had starting 
 this project. I was able to work with session cookies in Flask.
-    ['The Flask session object' - YouTube tutorial:](https://www.youtube.com/watch?v=PYILMiGxpAU)
-    ['The Flask session object' - Web tutorial:](https://pythonise.com/series/learning-flask/flask-session-object)
+    [See the tutorial here - 'The Flask session object', YouTube tutorial.](https://www.youtube.com/watch?v=PYILMiGxpAU)
+    [See the tutorial here - 'The Flask session object', Web tutorial.](https://pythonise.com/series/learning-flask/flask-session-object)
 - I have also benefited from other tutorials to reinforce my knowledge such as the one provided in the YouTube channel Pretty Printed 
 and Tech with Tim.
-    [Pretty Printed tutorial:](https://www.youtube.com/watch?v=vVx1737auSE)
-    [Tech with Tim tutorial:](https://www.youtube.com/watch?v=iIhAfX4iek0&t=432s)
+    [See the tutorial here - Pretty Printed tutorial.](https://www.youtube.com/watch?v=vVx1737auSE)
+    [See the tutorial here - Tech with Tim tutorial.](https://www.youtube.com/watch?v=iIhAfX4iek0&t=432s)
 
 ###### Documentation:
 At the start of this project, I reviewed some of my classmates submitted milestone III projects which were submitted in the Slack channel 
 for peer reviews. One which I found via LinkedIn really impressed me especially due to the attention to detail and overall effort put into 
 the documentation and commit logs. It inspired me to also add images and style my documentation and commit messages.
-    [Home Chopped:](https://github.com/Frozenaught/homechopped/tree/master/app)
+    [See the project - Home Chopped.](https://github.com/Frozenaught/homechopped/tree/master/app)
 
 ## Acknowledgements
 Many thanks to my mentor Moosa for encouraging me to continue in this program, and to the Code Institute staff who kindly adapted my 

@@ -98,14 +98,15 @@ on the red button next to the edit button.
     <img width="250" height="300" src="/static/img/documentation/profile/edit-recipe-page.png">
 </div>
 
+
 ##  UX Features
 This project's ideation started from the Assignment's Mandatory Requirements, and therefore the 
 features will be explained in the same order, showing how the project fullfills these requirements.
 
-##### Data handling:
+###### Data handling:
 - Created a MongoFB database connected to a Flask-based front-end.
 
-##### Database structure:
+###### Database structure:
 - Created a database structure where recipes can be stored with all fields required for front and back-end.
 - Created separate collections for Categories and Users which interact with the Recipes collection.
 - Created a separate collection called Brands which does not interact with the other collections, it's purpose
@@ -119,20 +120,20 @@ it's to display information to front-end.
     <img width="250" height="600" src="/static/img/documentation/data/collections-interactions.png">
 </div>
 
-##### User functionality:
+###### User functionality:
 - Users are able to create, edit and delete records that they have added to the database.
 - The user can access these records via their profile page.
 - The user can interact with those records via the buttons available over each recipe in their profile page.
 - In addition, the user is able to search the database by looking at different category pages.
 
-##### Front-end:
+###### Front-end:
 - Created a navigation menu via templating in base.html that works both in desktop and mobile devices.
 - Created Flask-based templates for the different pages needed for front-end, for example Recipe or Category pages.
 - Used the Materialize library to speed up the design process.
 - Used icons from both Materialize and Font Awesome libraries to make the interactions more intuitive.
 - And added custom HTML and CSS to complete the options not available via the Materialize library.
 
-##### Back-end:
+###### Back-end:
 - Imported all of the required libraries for this project.
 - Connected the flask front-end to the MongoDB database under an env file which is ignored by git.
 - Created a python file called app.py including all the routing needed such as rendering the templated html pages.
@@ -149,7 +150,15 @@ contained.
 </div>
 
 ### Existing Features
-###### Viewing information in a visually appealing way:
+###### Navigation:
+- Fixed desktop navigation menu - the user is able to navigate through the site and access About, Categories, Brand, Profile and Sign In pages 
+by using the navigation menu.
+- Mobile navigation menu - when browsing from mobile devices, the user can access a side navigation menu that pops up when the user clicks on 
+the burger icon on the top left.
+- Sign In/Sign Out navigation - if a user is in session, the navigation button displays the 'Sign Out' option, if thtere is no username 
+in session the option displayed is 'Sign In'. This is done via an if statement in the base.html file.
+
+###### Viewing information:
 - View existing records in the database - all users (without needing to log in) are able to view recipes that have been added to 
 the database. This is done by using a for each statement in the jinja html template, so that each recipe is displayed.
 - View single records from the database - this is done by using the routing in app.py to find one recipe from the collection via the 
@@ -170,8 +179,6 @@ separate collection called 'Brands'.
 session the user is redirected to an html Sign In page.
 - Sign Out function - if the user clicks on the Sign Out button at the top right corner of the navigation menu in desktop or bottom option 
 in the mobile menu, the user is automatically logged out. The username in session is removed.
-- Sign In/Sign Out navigation - if a user is in session, the navigation button displays the 'Sign Out' option, if thtere is no username 
-in session the option displayed is 'Sign In'. This is done via an if statement in the base.html file.
 
 ###### Interacting with the database:
 - Create new records - once logged in, the user is able to submit new records to the database by filling in the 'Add Recipe' form. To 
@@ -181,100 +188,200 @@ button over each recipe in their Profile Page. This is done by using the update 
 - Delete existing records - once logged in, the user is able to remove records (s)he has previously added by clicking on the 'Edit'
 button over each recipe in their Profile Page. This is done by using the remove function in app.py.
 
-
-Existing Features
-Feature 1 - allows users X to achieve Y, by having them fill out Z
-...
-For some/all of your features, you may choose to reference the specific project files that implement them, although this is entirely optional.
-
-In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
-
 ### Features Left to Implement
-Features Left to Implement
-Another feature idea
+###### Viewing information:
+- Search function to be able to find a recipe by keywords.
+- New field in the database for type of meal ex. Breakfast, Snack, Lunch + as a new collection in the database.
+- New field in the database for caloric content of each portion of the recipe.
+- Display multiple images in each recipe as an option. If there are more pictures, they are displayed, if not then at least one image 
+is required.
 
-=============
+###### Interacting with the database:
+- Adding the above new fields to the input forms.
+- Upload file function as an alternative option to adding an already hosted image URL.
 
-Languages
+###### Authentication & Data Validation:
+- Encypted password information using hash.
+- Super Admin view where a new record needs to be 'approved' before it goes into live.
 
-- HTML: Used to create the backbone and structure of the site.
-- CSS: Used to customize the visual outcome of the site. As well as to ensure via @media queries that the content displays nicely in all devices.
-- Javascript: Used to define the game mechanics, navigation as well as the interactions with the different html and DOM elements.
-Libraries
-- JQuery: Used to be able to select elements in the HTML code based on their styling, and then modify them in Javascript.
-- Python:
 
-Other tools
-Templating
-- Jinja
-- Flask
+##  Languages
+### Programming languages:
+- HTML: Combined with Jinja, HTML is used to create the backbone and structure of the site.
+  [Learn more about HTML:](https://www.w3schools.com/html/default.asp)
+- CSS: Used to customize the visual outcome of the site, as well as to ensure via @media queries that the content displays nicely 
+in all devices.
+  [Learn more about CSS:](https://www.w3schools.com/css/default.asp)
+- Javascript: Combined with JQuery, Javascript is used to deploy triggers that the user interacts with for example the input form 
+and the navigation dropdown and side mobile menus.
+  [Learn more about Javascript:](https://www.w3schools.com/js/default.asp)
+- Python: Used to communicate with the database, routing and displaying html templates and manipulating data via the user interface.
+  [Learn more about Python:](https://www.w3schools.com/python/default.asp)
 
-Styling
-- Materialize
-- Font Awesome
-- Canva Online Editor: Used to edit all of the graphic material used on this site.
+### Libraries:
+###### Structural:
+- Flask: Used as a web framework, which combined with Jinja and Werkzeug are able to simplify the web development process and make a 
+consistent framework.
+  [Learn more about Flask:](https://flask.palletsprojects.com/en/1.1.x/)
+- Jinja: Used as the templating engine to be able to create HTML pre-made layouts that can be then can be rendered via Python.
+  [Learn more about Jinja:](https://jinja.palletsprojects.com/en/2.11.x/)
+- Werkzeug: Used as the WSGI toolkit that Flask needs to run.
+  [Learn more about Werkzeug:](https://palletsprojects.com/p/werkzeug/)
 
-Production
+###### Styling and Interactions:
+- JQuery: Used to be able to select elements in the HTML code based on their styling, and then modify them in Javascript. Often it 
+has been part of Materialize components for this project.
+  [Learn more about JQuery:](https://www.w3schools.com/jquery/jquery_intro.asp)
+- Materialize: Used to speed up the development process by taking ready to use components and styling classes from the Materialize 
+libarary for example cards which are used to display the recipes.
+  [Learn more about Materialize:](https://materializecss.com/navbar.html)
+
+### Tools:
+###### Production Environment:
 - Gitpod: Used as the coding environment for this project.
 - Github: Used to store all repositories for this project, as well as to deploy the site via GitPages.
 
-Tracking
+###### Tracking:
 - Google Analytics: Used to track users behavior and traffic to the site.
 
-Others
+###### Closing knowledge gaps:
 - W3schools: Used to clarify and solidify knowledge acquired during the course.
 - Stack Overflow: Used as support when troubleshooting and fixing bugs.
 
 
-5. Structure: Incorporate a main navigation menu and structured layout (you might want to use Materialize or Bootstrap to accomplish this).
-6. Documentation: Write a README.md file for your project that explains what the project does and the value that it provides to its users.
-7. Version control: Use Git & GitHub for version control.
-8. Attribution: Maintain clear separation between code written by you and code from external sources (e.g. libraries or tutorials). Attribute any code from external sources to its source via comments above the code and (for larger dependencies) in the README.
-9. Deployment: Deploy the final version of your code to a hosting platform such as Heroku.
-10. Make sure to not include any passwords or secret keys in the project repository.
+##  Testing
+Manual tests have been conducted via the Google Chrome Developer Tools to verify that all pages are working properly. The site 
+functionalities have been tested in live/deployed version by 3 other users from Android and iOs devices.
 
-=============
+###### Navigation menu:
+1. Desktop:
+- The user is able to navigate to and from all pages via the navigation menu.
+- In the desktop menu, the user is able to see the categories set in the dropdown menu.
+- Sign In / Sign Out button in the navigator toggles according to whether the user is in session or not.
 
-JQuery
-The project uses JQuery to simplify DOM manipulation.
-Testing
-In this section, you need to convince the assessor that you have conducted enough testing to legitimately believe that the site works well. Essentially, in this part you will want to go over all of your user stories from the UX section and ensure that they all work as intended, with the project providing an easy and straightforward way for the users to achieve their goals.
+2. Mobile:
+- The mobile menu triggers when the hamburger icon is clicked on.
+- All of the options and icons in the menu display correctly.
+- The navigation functionality has been checked in different devices incl. mobile devices via the Google Chrome Developer Tools.
+- Sign In / Sign Out button in the navigator toggles according to whether the user is in session or not.
 
-Whenever it is feasible, prefer to automate your tests, and if you've done so, provide a brief explanation of your approach, link to the test file(s) and explain how to run them.
+###### Home Page:
+- The correct information displays from database records.
+- All users (without needing to log in) are able to view recipes that have been added to the database.
+- The correct tags display on each recipe card, either Vegan or Vegetarian.
+- The contents resize and are able to be seen properly in all different devices. This function has been testsed by using Google 
+Chrome Developer Tools.
+- If a user is logged in, a welcome message displays, if a user is not logged in there is no message displaying.
 
-For any scenarios that have not been automated, test the user stories manually and provide as much detail as is relevant. A particularly useful form for describing your testing process is via scenarios, such as:
+###### Category Pages:
+For all pages, the contents resize and are able to be seen properly in all different devices. This function has been testsed by using Google 
+Chrome Developer Tools.
 
-Contact form:
-Go to the "Contact Us" page
-Try to submit the empty form and verify that an error message about the required fields appears
-Try to submit the form with an invalid email address and verify that a relevant error message appears
-Try to submit the form with all inputs valid and verify that a success message appears.
-In addition, you should mention in this section how your project looks and works on different browsers and screen sizes.
+1. Vegan or Vegetarian template:
+- The correct Category name is displayed from 'Category' collection.
+- The correct Category description is displayed from 'Category' collection.
+- The correct tags display on each recipe card, either Vegan or Vegetarian.
+- The correct recipes show on each of the categories input by the user who created the recipe, either Vegan or Vegetarian.
 
-You should also mention in this section any interesting bugs or problems you discovered during your testing, even if you haven't addressed them yet.
+2. Express template:
+- The correct recipes display under the Express Page, since all of the recipes are under 30 minutes duration.
 
-If this section grows too long, you may want to split it off into a separate file and link to it from here.
+3. Brands template:
+- All of the required fields of each of the items in 'Brands' collection display properly (title, category, imageURL, description, key 
+bullet points).
 
-Deployment
-This section should describe the process you went through to deploy the project to a hosting platform (e.g. GitHub Pages or Heroku).
+###### Profile Page:
+For all pages, the contents resize and are able to be seen properly in all different devices. This function has been testsed by using Google 
+Chrome Developer Tools.
+- The user is able to see the records (s)he has added to the database.
+- If the user has not previously added a record, a message is displayed.
+- Each record displays a 'Edit' and 'Delete' icons on the top left corner.
+- These icons redirect properly and start the function called.
 
-In particular, you should provide all details of the differences between the deployed version and the development version, if any, including:
+1. Add a record:
+- The Add Recipe form and all of the fields display correctly.
+- The Submit button works properly and adds a new record to the database.
 
-Different values for environment variables (Heroku Config Vars)?
-Different configuration files?
-Separate git branch?
-In addition, if it is not obvious, you should also describe how to run your code locally.
+2. Edit a record:
+- The Edit Recipe form and all of the fields display correctly displaying the records in key fields previously input in the database.
+- The Submit button works properly and the record is updated.
 
-Credits
-Content
-The text for section Y was copied from the Wikipedia article Z
-Media
-The photos used in this site were obtained from ...
-Acknowledgements
-I received inspiration for this project from X
+3. Delete a record:
+- The record selected is deleted from the database.
+
+###### Authentication & User Pages:
+- If there is no username in session, the user is prompt to a Sign In form.
+- If the user does not have an account, the Register link under the Sign In form works properly.
+- A user that is not sign in can not access the Profile Page view.
+
+1. Register:
+- The user is able to create an account by interacting with the registration form.
+
+2. Sign In:
+- The user is able to log in by inputting a registered username and password to the Sign In form.
+- If the password or username is not correct, the same form is reloaded empty.
+
+3. Sign Out:
+- When the user clicks on the Sign Out button, the user is automatically logged out.
+- The session username is removed from the cookie which we can see in Google Chrome Developer Tools.
 
 
+## Deployment
+This application is hosted in Heroku, which you would need an account for.
+###### To deploy this project yourself:
+1. Copy the repository from Github.
+2. Open a Heroku account.
+3. Create a new project under Heroku.
+4. Go to the Settings tab in Heroku.
+5. Scroll down and click on Config Var to reveal the Config Variables.
+    Here we need to add the following variables:
+    - IP - which IP you can access this app from.
+    - MONGO_URI - which allows you to connect to the MongoDB database.
+    - PORT - which is set by default by Heroku.
+    - SECRET KEY 
+5. Go to the Deploy tab in Heroku.
+6. Connect Heroku to Github directly via API connector.
+7. When propted, logged in to your Github account. If everything went well, the Github sub-tab should say Connected in green.
+8. In the same tab, make sure that the right repository is connected.
+9. Select automatic deployments to Master to make the updating of the site easier.
 
 
-CREDITS
-https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
+## Credits
+###### Content
+- Placeholder Loreipsum text has been placed in some pages.
+
+###### Media:
+- Unsplash: Used to get all the stock photo material. This is a library where amateur photographers around the world upload their 
+pictures and make them available to other users for free.
+  [Learn more about Canva:](https://unsplash.com/s/photos/vegetarian)
+- Canva Online Editor: Used to do any graphic design used on this site such as resizing pictures or creating the logo.
+  [Learn more about Canva:](https://www.canva.com/)
+- Font Awesome: Used to get icons making it a more intuitive experience for the user such as for example having a User icon leading 
+to the Profile page.
+  [Learn more about Font Awesome:](https://fontawesome.com/icons?d=gallery)
+
+###### Login System:
+- Julian Nash's tutorials have been fundamental to closing some of the knowledge gaps that I had starting 
+this project. I was able to work with session cookies in Flask.
+    ['The Flask session object' - YouTube tutorial:](https://www.youtube.com/watch?v=PYILMiGxpAU)
+    ['The Flask session object' - Web tutorial:](https://pythonise.com/series/learning-flask/flask-session-object)
+- I have also benefited from other tutorials to reinforce my knowledge such as the one provided in the YouTube channel Pretty Printed 
+and Tech with Tim.
+    [Pretty Printed tutorial:](https://www.youtube.com/watch?v=vVx1737auSE)
+    [Tech with Tim tutorial:](https://www.youtube.com/watch?v=iIhAfX4iek0&t=432s)
+
+###### Documentation:
+At the start of this project, I reviewed some of my classmates submitted milestone III projects which were submitted in the Slack channel 
+for peer reviews. One which I found via LinkedIn really impressed me especially due to the attention to detail and overall effort put into 
+the documentation and commit logs. It inspired me to also add images and style my documentation and commit messages.
+    [Home Chopped:](https://github.com/Frozenaught/homechopped/tree/master/app)
+
+## Acknowledgements
+Many thanks to my mentor Moosa for encouraging me to continue in this program, and to the Code Institute staff who kindly adapted my 
+schedule and gave me a few extra weeks.
+
+And thank you to my fiancé, Jonatan, for his patience and kindness and for being a true partner taking care of us so that I could time 
+to work on my school assignments.
+
+And to my brain and body for coping with a full-time job and a challenging program, both highly demanding especially 
+in these past months, but both equally rewarding.

@@ -98,11 +98,89 @@ on the red button next to the edit button.
     <img width="250" height="300" src="/static/img/documentation/profile/edit-recipe-page.png">
 </div>
 
+##  UX Features
+This project's ideation started from the Assignment's Mandatory Requirements, and therefore the 
+features will be explained in the same order, showing how the project fullfills these requirements.
 
-============
+##### Data handling:
+- Created a MongoFB database connected to a Flask-based front-end.
 
-Features
-In this section, you should go over the different parts of your project, and describe each in a sentence or so.
+##### Database structure:
+- Created a database structure where recipes can be stored with all fields required for front and back-end.
+- Created separate collections for Categories and Users which interact with the Recipes collection.
+- Created a separate collection called Brands which does not interact with the other collections, it's purpose
+it's to display information to front-end.
+
+<div style="display: inline block;">
+    <img width="250" height="300" src="/static/img/documentation/data/collection-example.png">
+    <img width="250" height="300" src="/static/img/documentation/data/collections.png">
+</div>
+<div style="display: inline block;">
+    <img width="250" height="600" src="/static/img/documentation/data/collections-interactions.png">
+</div>
+
+##### User functionality:
+- Users are able to create, edit and delete records that they have added to the database.
+- The user can access these records via their profile page.
+- The user can interact with those records via the buttons available over each recipe in their profile page.
+- In addition, the user is able to search the database by looking at different category pages.
+
+##### Front-end:
+- Created a navigation menu via templating in base.html that works both in desktop and mobile devices.
+- Created Flask-based templates for the different pages needed for front-end, for example Recipe or Category pages.
+- Used the Materialize library to speed up the design process.
+- Used icons from both Materialize and Font Awesome libraries to make the interactions more intuitive.
+- And added custom HTML and CSS to complete the options not available via the Materialize library.
+
+##### Back-end:
+- Imported all of the required libraries for this project.
+- Connected the flask front-end to the MongoDB database under an env file which is ignored by git.
+- Created a python file called app.py including all the routing needed such as rendering the templated html pages.
+- Defined the data types that should be collected in the database when the user is adding or editing the documents 
+contained.
+- Created authentication requirements, where a user can not access certain pages unless a username is in session.
+
+<div style="display: inline block;">
+    <img width="250" height="300" src="/static/img/documentation/data/configuration.png">
+    <img width="250" height="300" src="/static/img/documentation/data/routing.png">
+</div>
+<div style="display: inline block;">
+    <img width="600" height="300" src="/static/img/documentation/data/data-types.png">
+</div>
+
+### Existing Features
+###### Viewing information in a visually appealing way:
+- View existing records in the database - all users (without needing to log in) are able to view recipes that have been added to 
+the database. This is done by using a for each statement in the jinja html template, so that each recipe is displayed.
+- View single records from the database - this is done by using the routing in app.py to find one recipe from the collection via the 
+Object(Id).
+- View recipes by category - all users (without needing to log in) are able to see if recipes are vegan or vegetarian via the tag on 
+each recipe preview card. This is done by using an if statement in the jinja html template.
+- View recipes under 30 minutes - all users (without needing to log in) are able to view recipes which duration is under 30 minutes. 
+This is not a user input, but rather a boolean data type set in app.py. When duration is under 30 minutes, the data field returns True, 
+which allows us to display the filtered view of the recipes.
+- View brands - all users (without needing to log in) are able to see the recommended brands. These are simply displayed from a 
+separate collection called 'Brands'.
+- View records created - once logged in, the user is able to see the records they have inputted under their profile page.
+
+###### Authentication of user:
+- Register an account - to be able to interact with the database, the user must first create an account. The user is able to do so via the 
+'Register an Account' template which adds a new record to the 'Users' collection.
+- Sign In function - if the user tries to access the Profile Page, app.py checks if there is a username in session. If no username is in 
+session the user is redirected to an html Sign In page.
+- Sign Out function - if the user clicks on the Sign Out button at the top right corner of the navigation menu in desktop or bottom option 
+in the mobile menu, the user is automatically logged out. The username in session is removed.
+- Sign In/Sign Out navigation - if a user is in session, the navigation button displays the 'Sign Out' option, if thtere is no username 
+in session the option displayed is 'Sign In'. This is done via an if statement in the base.html file.
+
+###### Interacting with the database:
+- Create new records - once logged in, the user is able to submit new records to the database by filling in the 'Add Recipe' form. To 
+do this we use the insert function in app.py combined with a jinja template form.
+- Edit existing records - once logged in, the user is able to update the records (s)he has previously added by clicking on the 'Edit'
+button over each recipe in their Profile Page. This is done by using the update function in app.py combined with a jinja template form.
+- Delete existing records - once logged in, the user is able to remove records (s)he has previously added by clicking on the 'Edit'
+button over each recipe in their Profile Page. This is done by using the remove function in app.py.
+
 
 Existing Features
 Feature 1 - allows users X to achieve Y, by having them fill out Z
@@ -111,6 +189,7 @@ For some/all of your features, you may choose to reference the specific project 
 
 In addition, you may also use this section to discuss plans for additional features to be implemented in the future:
 
+### Features Left to Implement
 Features Left to Implement
 Another feature idea
 
@@ -145,6 +224,14 @@ Tracking
 Others
 - W3schools: Used to clarify and solidify knowledge acquired during the course.
 - Stack Overflow: Used as support when troubleshooting and fixing bugs.
+
+
+5. Structure: Incorporate a main navigation menu and structured layout (you might want to use Materialize or Bootstrap to accomplish this).
+6. Documentation: Write a README.md file for your project that explains what the project does and the value that it provides to its users.
+7. Version control: Use Git & GitHub for version control.
+8. Attribution: Maintain clear separation between code written by you and code from external sources (e.g. libraries or tutorials). Attribute any code from external sources to its source via comments above the code and (for larger dependencies) in the README.
+9. Deployment: Deploy the final version of your code to a hosting platform such as Heroku.
+10. Make sure to not include any passwords or secret keys in the project repository.
 
 =============
 

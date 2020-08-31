@@ -44,8 +44,8 @@ category tag.
 how many people it will feed.
 
 <div style="display: inline block;">
-    <img width="300" height="300" src="/static/img/documentation/wireframe-home.png">
-    <img width="300" height="300" src="/static/img/documentation/wireframe-home-2.png">
+    <img width="350" height="300" src="/static/img/documentation/wireframe-home.png">
+    <img width="350" height="300" src="/static/img/documentation/wireframe-home-2.png">
 </div>
 
 #####   Category
@@ -61,7 +61,7 @@ hyperlink on each recipe card.
 about brands and possible sponsors that have meat or dairy replacement products.
 
 <div style="display: inline block;">
-    <img width="300" height="300" src="/static/img/documentation/wireframe-category.png">
+    <img width="350" height="300" src="/static/img/documentation/wireframe-category.png">
 </div>
 
 #####   Single Recipe
@@ -85,8 +85,8 @@ on the red button next to the edit button.
 - The user is able to add a new recipe by clicking on the 'Add Recipe' button in their profile page.
 
 <div style="display: inline block;">
-    <img width="300" height="300" src="/static/img/documentation/wireframe-profile.png">
-    <img width="300" height="300" src="/static/img/documentation/wireframe-add.png">
+    <img width="350" height="300" src="/static/img/documentation/wireframe-profile.png">
+    <img width="350" height="300" src="/static/img/documentation/wireframe-add.png">
 </div>
 
 ##  UX Features

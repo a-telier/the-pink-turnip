@@ -44,9 +44,8 @@ category tag.
 how many people it will feed.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/home-page.png">
-    <img width="250" height="300" src="/static/img/documentation/home-browse-page.png">
-    <img width="250" height="300" src="/static/img/documentation/about-page.png">
+    <img width="250" height="300" src="/static/img/documentation/wireframe-home.png">
+    <img width="250" height="300" src="/static/img/documentation/wireframe-home-2.png">
 </div>
 
 #####   Category
@@ -62,20 +61,13 @@ hyperlink on each recipe card.
 about brands and possible sponsors that have meat or dairy replacement products.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/categories/all-recipes-page.png">
-    <img width="250" height="300" src="/static/img/documentation/categories/vegan-page.png">
-    <img width="250" height="300" src="/static/img/documentation/categories/brands-page.png">
+    <img width="250" height="300" src="/static/img/documentation/wireframe-category.png">
 </div>
 
 #####   Single Recipe
 - The user is able to visualize duration, portions, ingredients and instructions for each recipe.
 - Once in the single recipe, the user is able to browse through other recipes by simply 
 scrolling all the way down and clicking on another recipe.
-
-<div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/recipes/single-page.png">
-    <img width="250" height="300" src="/static/img/documentation/recipes/single-page-others.png">
-</div>
 
 #####   Profile Interactions
 - The user is able to login by creating an account which requires a username and password.
@@ -93,11 +85,9 @@ on the red button next to the edit button.
 - The user is able to add a new recipe by clicking on the 'Add Recipe' button in their profile page.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/profile/profile-page.png">
-    <img width="250" height="300" src="/static/img/documentation/profile/add-recipe-page.png">
-    <img width="250" height="300" src="/static/img/documentation/profile/edit-recipe-page.png">
+    <img width="250" height="300" src="/static/img/documentation/wireframe-profile.png">
+    <img width="250" height="300" src="/static/img/documentation/wireframe-add.png">
 </div>
-
 
 ##  UX Features
 This project's ideation started from the Assignment's Mandatory Requirements, and therefore the 
@@ -117,7 +107,7 @@ it's to display information to front-end.
     <img width="250" height="300" src="/static/img/documentation/data/collections.png">
 </div>
 <div style="display: inline block;">
-    <img width="250" height="600" src="/static/img/documentation/data/collections-interactions.png">
+    <img width="600" height="300" src="/static/img/documentation/data/collections-interactions.png">
 </div>
 
 ###### User functionality:
@@ -172,6 +162,22 @@ which allows us to display the filtered view of the recipes.
 separate collection called 'Brands'.
 - View records created - once logged in, the user is able to see the records they have inputted under their profile page.
 
+<div style="display: inline block;">
+    <img width="250" height="300" src="/static/img/documentation/home-page.png">
+    <img width="250" height="300" src="/static/img/documentation/home-browse-page.png">
+    <img width="250" height="300" src="/static/img/documentation/about-page.png">
+</div>
+<div style="display: inline block;">
+    <img width="250" height="300" src="/static/img/documentation/categories/all-recipes-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/vegan-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/brands-page.png">
+</div>
+<div style="display: inline block;">
+    <img width="250" height="300" src="/static/img/documentation/recipes/single-page.png">
+    <img width="250" height="300" src="/static/img/documentation/recipes/single-page-others.png">
+</div>
+
+
 ###### Authentication of user:
 - Register an account - to be able to interact with the database, the user must first create an account. The user is able to do so via the 
 'Register an Account' template which adds a new record to the 'Users' collection.
@@ -187,6 +193,15 @@ do this we use the insert function in app.py combined with a jinja template form
 button over each recipe in their Profile Page. This is done by using the update function in app.py combined with a jinja template form.
 - Delete existing records - once logged in, the user is able to remove records (s)he has previously added by clicking on the 'Edit'
 button over each recipe in their Profile Page. This is done by using the remove function in app.py.
+
+<div style="display: inline block;">
+    <img width="250" height="300" src="/static/img/documentation/profile/profile-page.png">
+    <img width="250" height="300" src="/static/img/documentation/profile/add-recipe-page.png">
+    <img width="250" height="300" src="/static/img/documentation/profile/edit-recipe-page.png">
+</div>
+
+###### Tracking:
+- Google Analytics tracking pixel is installed, allowing to see traffic, users, devices, etc.
 
 ### Features Left to Implement
 ###### Viewing information:
@@ -204,6 +219,8 @@ is required.
 - Encypted password information using hash.
 - Super Admin view where a new record needs to be 'approved' before it goes into live.
 
+###### Data Protection:
+- Adding T&C including GDPR clause and how the data is stored and for what purposes.
 
 ##  Languages
 ### Programming languages:

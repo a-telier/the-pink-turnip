@@ -388,15 +388,13 @@ and Tech with Tim.
 ###### Documentation:
 At the start of this project, I reviewed some of my classmates submitted milestone III projects which were submitted in the Slack channel 
 for peer reviews. One which I found via LinkedIn really impressed me especially due to the attention to detail and overall effort put into 
-the documentation and commit logs. It inspired me to also add images and style my documentation and commit messages.
+the documentation and commit logs.
+It inspired me to also add images and style my documentation and commit messages.
+It also inspired me to test Balsamiq to create my wireframes and visualize my design process.
     [See the project - Home Chopped.](https://github.com/Frozenaught/homechopped/tree/master/app)
 
 ## Acknowledgements
 Many thanks to my mentor Moosa for encouraging me to continue in this program, and to the Code Institute staff who kindly adapted my 
 schedule and gave me a few extra weeks.
 
-And thank you to my fiancé, Jonatan, for his patience and kindness and for being a true partner taking care of us so that I could time 
-to work on my school assignments.
-
-And to my brain and body for coping with a full-time job and a challenging program, both highly demanding especially 
-in these past months, but both equally rewarding.
+Thank you to my fiancé, Jonatan, for his patience and kindness and for being a true partner.

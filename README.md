@@ -44,8 +44,8 @@ category tag.
 how many people it will feed.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/wireframe-home.png">
-    <img width="250" height="300" src="/static/img/documentation/wireframe-home-2.png">
+    <img width="300" height="300" src="/static/img/documentation/wireframe-home.png">
+    <img width="300" height="300" src="/static/img/documentation/wireframe-home-2.png">
 </div>
 
 #####   Category
@@ -61,7 +61,7 @@ hyperlink on each recipe card.
 about brands and possible sponsors that have meat or dairy replacement products.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/wireframe-category.png">
+    <img width="300" height="300" src="/static/img/documentation/wireframe-category.png">
 </div>
 
 #####   Single Recipe
@@ -85,8 +85,8 @@ on the red button next to the edit button.
 - The user is able to add a new recipe by clicking on the 'Add Recipe' button in their profile page.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/wireframe-profile.png">
-    <img width="250" height="300" src="/static/img/documentation/wireframe-add.png">
+    <img width="300" height="300" src="/static/img/documentation/wireframe-profile.png">
+    <img width="300" height="300" src="/static/img/documentation/wireframe-add.png">
 </div>
 
 ##  UX Features
@@ -103,8 +103,8 @@ features will be explained in the same order, showing how the project fullfills 
 it's to display information to front-end.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/data/collection-example.png">
     <img width="250" height="300" src="/static/img/documentation/data/collections.png">
+    <img width="250" height="300" src="/static/img/documentation/data/collection-examples.png">
 </div>
 <div style="display: inline block;">
     <img width="600" height="300" src="/static/img/documentation/data/collections-interactions.png">
@@ -132,11 +132,11 @@ contained.
 - Created authentication requirements, where a user can not access certain pages unless a username is in session.
 
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/data/configuration.png">
-    <img width="250" height="300" src="/static/img/documentation/data/routing.png">
+    <img width="300" height="300" src="/static/img/documentation/data/configuration.png">
+    <img width="300" height="300" src="/static/img/documentation/data/routing.png">
 </div>
 <div style="display: inline block;">
-    <img width="600" height="300" src="/static/img/documentation/data/data-types.png">
+    <img width="650" height="300" src="/static/img/documentation/data/data-types.png">
 </div>
 
 ### Existing Features
@@ -165,18 +165,16 @@ separate collection called 'Brands'.
 <div style="display: inline block;">
     <img width="250" height="300" src="/static/img/documentation/home-page.png">
     <img width="250" height="300" src="/static/img/documentation/home-browse-page.png">
-    <img width="250" height="300" src="/static/img/documentation/about-page.png">
 </div>
 <div style="display: inline block;">
     <img width="250" height="300" src="/static/img/documentation/categories/all-recipes-page.png">
     <img width="250" height="300" src="/static/img/documentation/categories/vegan-page.png">
-    <img width="250" height="300" src="/static/img/documentation/categories/brands-page.png">
+    <img width="250" height="300" src="/static/img/documentation/recipes/single-page.png">
 </div>
 <div style="display: inline block;">
-    <img width="250" height="300" src="/static/img/documentation/recipes/single-page.png">
-    <img width="250" height="300" src="/static/img/documentation/recipes/single-page-others.png">
+    <img width="250" height="300" src="/static/img/documentation/about-page.png">
+    <img width="250" height="300" src="/static/img/documentation/categories/brands-page.png">
 </div>
-
 
 ###### Authentication of user:
 - Register an account - to be able to interact with the database, the user must first create an account. The user is able to do so via the 

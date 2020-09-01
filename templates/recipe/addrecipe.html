@@ -22,9 +22,8 @@
             <div class="input-field col s12">
                 <select>
                     <option value="" disabled selected>Select a category</option>
-                    {% for category in categories %}
-                        <option href="{{ url_for('category')}}" value="{{category.name}}" {{category.icon}}> {{category.name}}</option>
-                    {% endfor %}
+                    <option name="category" id="vegan" type="text"> Vegan</option>
+                    <option name="category" id="vegetarian" type="text"> Vegetarian</option>
                 </select>
                 <label>Categories</label>
             </div>

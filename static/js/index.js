@@ -22,3 +22,9 @@ function showPassword() {
         input.type = "password";
     }
 }
+
+// SELECTOR form
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });

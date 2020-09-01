@@ -25,6 +25,13 @@
                     <label for="name">Name</label>
                 </div>
             </div>
+            <div class="input-field col s12">
+                <select class="browser-default" name="category" id="category" value="{{recipe.category}}">
+                    <option value="" disabled selected>Is this recipe vegan or vegetarian?</option>
+                    <option value="vegan"> Vegan</option>
+                    <option value="vegetarian"> Vegetarian</option>
+                </select>
+            </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">image</i>

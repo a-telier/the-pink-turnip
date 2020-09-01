@@ -55,7 +55,8 @@ def get_recipe():
 #   ABOUT
 @app.route('/about')
 def about():
-    return render_template("about.html")
+    return render_template("about.html",
+    categories=mongo.db.categories.find())
 
 #   BRANDS WE LOVE
 @app.route('/brands')
@@ -203,14 +204,13 @@ def insert_recipe():
 
     recipeDict = {
         "date": datetime.datetime.now(),  # returns the date for today
-        "email": str(request.form.get('email')),
         "name": request.form.get('name'),
         "imageURL": request.form.get('imageURL'),
         "ingredients": str(request.form.get('ingredients')).split(sep=", "),
         "instructions": str(request.form.get('instructions')).split(sep=", "),
         "duration": int(request.form.get('duration')),
         "portions": int(request.form.get('portions')),
-        "categories": str(request.form.get('category')),
+        "category": str(request.form.get('category')),
         "isUnder30": bool(isUnder30),
         "username": session["username"],
     }
@@ -250,7 +250,7 @@ def update_recipe(recipe_id):
         "instructions": str(request.form.get('instructions')).split(sep=", "),
         "duration": int(request.form.get('duration')),
         "portions": int(request.form.get('portions')),
-        "categories": str(request.form.get('category')),
+        "category": str(request.form.get('category')),
         "isUnder30": bool(isUnder30),
         "username": session["username"],
     })

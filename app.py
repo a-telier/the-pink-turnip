@@ -244,7 +244,6 @@ def update_recipe(recipe_id):
     recipes.update( {'_id': ObjectId(recipe_id)},
     {
         "date": datetime.datetime.now(),  # returns the date for today
-        "email": str(request.form.get('email')),
         "name": request.form.get('name'),
         "imageURL": request.form.get('imageURL'),
         "ingredients": str(request.form.get('ingredients')).split(sep=", "),
@@ -272,7 +271,8 @@ def show_recipe(recipe_id):
     # fetches the data based on the _id
     return render_template("recipe/recipe.html",
     recipes=mongo.db.recipes.find(),
-    recipe=recipe)
+    recipe=recipe,
+    categories=mongo.db.categories.find())
 
 
 ###########################################

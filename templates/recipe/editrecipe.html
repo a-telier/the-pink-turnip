@@ -36,7 +36,7 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">add_circle_outline</i>
                     <textarea name="ingredients" id="ingredients" class="materialize-textarea" value="{{recipe.ingredients}}" required></textarea>
-                    <label for="ingredients">Ingredients</label>
+                    <label for="ingredients">Ingredients (please separate your ingredients with commas ',')</label>
                 </div>
             </div>
             <div class="row">
@@ -55,25 +55,8 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">mode_edit</i>
                     <textarea name="instructions" id="instructions" class="materialize-textarea" value="{{recipe.instructions}}" required></textarea>
-                    <label for="instructions">Instructions</label>
+                    <label for="instructions">Instructions (please separate your ingredients with commas ',')</label>
                 </div>
-            </div>
-            <div class="row">
-                <div class="switch col s6">
-                    <label>
-                        <input id="isVetarian" name="isVegetarian" type="checkbox" value="{{recipe.isVegetarian}}">
-                        <span class="lever"></span>
-                        Is Vegetarian
-                    </label>
-                </div>
-                <div class="switch col s6">
-                    <label>
-                        <input id="isVegan" name="isVegan" type="checkbox" value="{{recipe.isVegan}}">
-                        <span class="lever"></span>
-                        Is Vegan
-                    </label>
-                </div>
-                <!-- <span class="helper-text" data-error="wrong" data-success="right">If your recipe provides both 'Vegetarian' and 'Vegan' instructions, please mark both checkboxes.</span> -->
             </div>
             <div class="row">
                 <button class="btn waves-effect waves-light" type="submit" name="action">EDIT RECIPE</button>

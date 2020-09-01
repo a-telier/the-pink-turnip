@@ -378,12 +378,12 @@ to the Profile page.
 ###### Login System:
 - Julian Nash's tutorials have been fundamental to closing some of the knowledge gaps that I had starting 
 this project. I was able to work with session cookies in Flask.
-    [See the tutorial here - 'The Flask session object', YouTube tutorial.](https://www.youtube.com/watch?v=PYILMiGxpAU)
-    [See the tutorial here - 'The Flask session object', Web tutorial.](https://pythonise.com/series/learning-flask/flask-session-object)
+    [See the tutorial here - 'The Flask session object', YouTube tutorial here, ](https://www.youtube.com/watch?v=PYILMiGxpAU)
+    [& The Web tutorial here.](https://pythonise.com/series/learning-flask/flask-session-object)
 - I have also benefited from other tutorials to reinforce my knowledge such as the one provided in the YouTube channel Pretty Printed 
 and Tech with Tim.
     [See the tutorial here - Pretty Printed tutorial.](https://www.youtube.com/watch?v=vVx1737auSE)
-    [See the tutorial here - Tech with Tim tutorial.](https://www.youtube.com/watch?v=iIhAfX4iek0&t=432s)
+    [& Tech with Tim tutorial.](https://www.youtube.com/watch?v=iIhAfX4iek0&t=432s)
 
 ###### Documentation:
 At the start of this project, I reviewed some of my classmates submitted milestone III projects which were submitted in the Slack channel 
@@ -394,7 +394,7 @@ It also inspired me to test Balsamiq to create my wireframes and visualize my de
     [See the project - Home Chopped.](https://github.com/Frozenaught/homechopped/tree/master/app)
 
 ## Acknowledgements
-Many thanks to my mentor Moosa for encouraging me to continue in this program, and to the Code Institute staff who kindly adapted my 
-schedule and gave me a few extra weeks.
+Many thanks to my mentor Moosa for encouraging me to continue this program, and to the Code Institute staff who kindly adapted my 
+schedule.
 
-Thank you to my fiancé, Jonatan, for his patience and kindness and for being a true partner.
+Thank you to my fiancé, Jonatan, for his patience and kindness, and for being a true partner.

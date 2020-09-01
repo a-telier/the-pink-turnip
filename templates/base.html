@@ -58,7 +58,7 @@
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="{{ url_for('all_recipes')}}"> All Recipes</a></li>
         {% for category in categories %}
-        <li><a href="{{url_for('category', category_name=category.name)}}"> {{category.name}}</a></li>
+        <li><a href="{{url_for('category', category_name=category.name)}}"> {{category.name|capitalize}}</a></li>
         {% endfor %}
         <li><a href="{{ url_for('get_express')}}"> Express (30m or less!)</a></li>
     </ul>
@@ -105,7 +105,8 @@
 {% block body %}
 {% endblock %}
 </body>
-<footer>
+
+<footer class="page-footer pink darken-1">
 {% block footer %}
 <div class="a-telier center">made by l'A-telier</div>
 {% endblock %}

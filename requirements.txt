@@ -7,7 +7,7 @@
 bcrypt==3.1.7
 click==7.1.2
 dnspython==2.0.0
-Flask==1.1.2
+Flask==2.3.2
 Flask-Cache==0.13.1
 Flask-Materialize==0.2.4
 Flask-PyMongo==2.3.0
